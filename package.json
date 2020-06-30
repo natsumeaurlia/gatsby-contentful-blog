@@ -8,6 +8,9 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "bootstrap": "^4.5.0",
     "gatsby": "^2.23.10",
     "gatsby-image": "^2.4.8",
@@ -34,6 +37,7 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "prettier": "2.0.5"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",

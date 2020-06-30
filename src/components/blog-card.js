@@ -1,5 +1,7 @@
 import React from "react"
-import { Button, Row, Nav } from "react-bootstrap"
+import { Row } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTags } from "@fortawesome/free-solid-svg-icons"
 import CardStyles from "./blog-card.module.css"
 
 const BlogCard = props => (
@@ -36,7 +38,7 @@ const BlogCard = props => (
           <div className="col-6">
             <ul className={CardStyles.post_tags}>
               <li>
-                <i className="fa fa-tags"></i>
+                <FontAwesomeIcon icon={faTags}></FontAwesomeIcon>
               </li>
               <li>
                 <a href="#">Beauty</a>,

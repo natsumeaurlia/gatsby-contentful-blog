@@ -11,8 +11,8 @@ const Footer = () => (
         <div className="col-sm-12 col-md-6">
           <h6>About</h6>
           <p className="text-justify">
-            Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to
-            help the upcoming programmers with the code. Scanfcode focuses on
+            Scanfcode.com <span>CODE WANTS TO BE SIMPLE </span> is an initiative
+            to help the upcoming programmers with the code. Scanfcode focuses on
             providing the most efficient code or snippets as the code wants to
             be simple. We will help programmers build up concepts in different
             programming languages that include C, C++, Java, HTML, CSS,
@@ -57,22 +57,7 @@ const Footer = () => (
             <CopyRight />
           </p>
         </div>
-        <div className="col-md-4 col-sm-6 col-xs-12">
-          <Nav className={FooterStyles.social_icons}>
-            <Nav.Link as={Link} to="/" className={FooterStyles.facebook}>
-              <i className="fa fa-facebook" />
-            </Nav.Link>
-            <Nav.Link as={Link} to="/" className={FooterStyles.twitter}>
-              <i className="fa fa-twitter" />
-            </Nav.Link>
-            <Nav.Link as={Link} to="/" className={FooterStyles.dribbble}>
-              <i className="fa fa-dribbble" />
-            </Nav.Link>
-            <Nav.Link as={Link} to="/" className={FooterStyles.linkedin}>
-              <i className="fa fa-linkedin" />
-            </Nav.Link>
-          </Nav>
-        </div>
+        <div className="col-md-4 col-sm-6 col-xs-12"></div>
       </Row>
     </Container>
   </footer>
