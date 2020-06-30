@@ -27,7 +27,9 @@ const BlogCard = props => (
       </ul>
       <p dangerouslySetInnerHTML={{ __html: props.excerpt }} />
       <div className="w-100 d-flex justify-content-center">
-        <a className={CardStyles.readMore}>Read More</a>
+        <a className={CardStyles.readMore} href={props.readMore}>
+          Read More
+        </a>
       </div>
       <div className={CardStyles.post_options + " mt-5"}>
         <Row>
