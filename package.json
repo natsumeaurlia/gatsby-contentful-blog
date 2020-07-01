@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "gatsby-source-contentful": "^2.3.18",
     "prettier": "2.0.5"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",

@@ -1,3 +1,10 @@
+// ファイルの先頭に以下の内容を追加
+const dotenv = require("dotenv")
+
+if (process.env.ENVIRONMENT !== "production") {
+  dotenv.config()
+}
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -72,6 +79,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
+      },
+    },
   ],
 }
