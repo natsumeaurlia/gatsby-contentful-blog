@@ -1,38 +1,57 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+  const post = data.contentfulBlogPost
+  const categories = data.contentfulBlogPost.category
+  // const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+    <Layout>
+      <section>
+        <figure>
+          <Img
+            fluid={post.eyecatch.fluid}
+            alt={post.eyecatch.desctiption}
+          ></Img>
+        </figure>
+      </section>
       <article>
-        {post.frontmatter.title}
-        <p>{post.frontmatter.date}</p>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <footer></footer>
+        {post.title}
+
+        <aside>
+          <time dateTime={post.publishDate}>{post.publishedDateJP}</time>
+        </aside>
+        <section>{documentToReactComponents(post.content.json)}</section>
+        <footer>
+          カテゴリ
+          <ul>
+            {categories.map(c => (
+              <li key={c.id} className={c.slug}>
+                {c.title}
+              </li>
+            ))}
+          </ul>
+        </footer>
       </article>
       <ul>
         <li>
           {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
+            <Link to={previous.slug} rel="prev">
+              ← {previous.title}
             </Link>
           )}
         </li>
         <li>
           {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
+            <Link to={next.slug} rel="next">
+              {next.title} →
             </Link>
           )}
         </li>
@@ -44,19 +63,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      title
+      publishedDateJP: publishDate(formatString: "Y年MM月DD日")
+      publishDate
+      category {
         title
+        slug
+        id
       }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+      content {
+        json
+      }
+      eyecatch {
+        fluid(maxWidth: 1600) {
+          ...GatsbyContentfulFluid_withWebp
+        }
         description
       }
     }

@@ -1,5 +1,6 @@
 import React from "react"
 import { Row } from "react-bootstrap"
+import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTags } from "@fortawesome/free-solid-svg-icons"
 import CardStyles from "./blog-card.module.css"
@@ -7,9 +8,10 @@ import CardStyles from "./blog-card.module.css"
 const BlogCard = props => (
   <div className={CardStyles.blog_post}>
     <div className={CardStyles.blog_thumb}>
-      <img
-        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gonvillehotel.co.uk%2Fevent%2Fenchanted-cinema-the-great-gatsby%2F&psig=AOvVaw2tskRTS3Qov2GRAyGmfXth&ust=1593440765842000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjf47fbpOoCFQAAAAAdAAAAABADg"
-        alt=""
+      <Img
+        style={{ height: "100%" }}
+        fluid={props.eyecatch}
+        alt={props.eyecatchDescription}
       />
     </div>
     <div className={CardStyles.down_content}>
@@ -27,7 +29,10 @@ const BlogCard = props => (
           <a>36 Comments</a>
         </li>
       </ul>
-      <p dangerouslySetInnerHTML={{ __html: props.excerpt }} />
+      <p
+        style={{ textOverflow: "ellipsis" }}
+        dangerouslySetInnerHTML={{ __html: props.excerpt }}
+      />
       <div className="w-100 d-flex justify-content-center">
         <a className={CardStyles.readMore} href={props.readMore}>
           Read More

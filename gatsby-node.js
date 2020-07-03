@@ -8,18 +8,19 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
           edges {
             node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
+              id
+              slug
+            }
+            next {
+              title
+              slug
+            }
+            previous {
+              title
+              slug
             }
           }
         }
@@ -32,17 +33,15 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allContentfulBlogPost.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  posts.forEach((post, next, previous) => {
     createPage({
-      path: post.node.fields.slug,
+      path: post.node.slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        id: post.node.id,
+        slug: post.node.slug,
         previous,
         next,
       },
@@ -53,12 +52,12 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `allContentfulBlogPost`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: `slug`,
     })
   }
 }

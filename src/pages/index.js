@@ -5,21 +5,22 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BlogCard from "../components/blog-card"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+const BlogIndex = ({ data }) => {
+  // const siteTitle = data.site.siteMetadata.title
+  const posts = data.allContentfulBlogPost.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+    <Layout>
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const title = node.title
         return (
           <BlogCard
-            key={node.fields.slug}
+            key={node.id}
             title={title}
-            excerpt={node.frontmatter.description || node.excerpt}
-            readMore={node.fields.slug}
+            excerpt="heloo"
+            readMore="helloo"
+            eyecatch={node.eyecatch.fluid}
+            eyecatchDescription={node.eyecatch.description}
           />
         )
       })}
@@ -31,22 +32,21 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+          id
+          slug
+          title
+          publishDate
+          eyecatch {
+            fluid(maxWidth: 500) {
+              ...GatsbyContentfulFluid_withWebp
+            }
             description
+          }
+          content {
+            json
           }
         }
       }
