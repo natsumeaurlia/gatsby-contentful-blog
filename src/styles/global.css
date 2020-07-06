@@ -9,6 +9,7 @@ https://templatemo.com/tm-551-stand-blog
 body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+  background-color: #f6f6f4;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,13 +42,19 @@ h6 {
   margin: 0px;
 }
 
-.main-button a {
-  display: inline-block;
-  background-color: #f48840;
-  color: #fff;
-  font-size: 13px;
+.btn_orange {
+  font-size: 15px;
   font-weight: 500;
-  padding: 12px 20px;
-  text-transform: uppercase;
+  color: #f48840 !important;
+  background-color: #ffffff;
+  display: inline-block;
+  border: 1px solid #f48840;
+  padding: 10px 18px;
   transition: all 0.3s;
+  border-radius: 0.25rem;
+}
+
+.btn_orange:hover {
+  background-color: #f48840;
+  color: #20232e !important;
 }

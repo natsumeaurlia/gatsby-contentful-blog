@@ -12,13 +12,13 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const title = node.title
         return (
           <BlogCard
             key={node.id}
-            title={title}
-            excerpt="heloo"
-            readMore="helloo"
+            title={node.title}
+            excerpt={node.content.json}
+            publishDate={node.publishedDateJP}
+            readMore={node.slug}
             eyecatch={node.eyecatch.fluid}
             eyecatchDescription={node.eyecatch.description}
           />
@@ -38,7 +38,7 @@ export const pageQuery = graphql`
           id
           slug
           title
-          publishDate
+          publishedDateJP: publishDate(formatString: "Y年MM月DD日")
           eyecatch {
             fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid_withWebp
