@@ -16,8 +16,9 @@ const BlogIndex = ({ data }) => {
           <BlogCard
             key={node.id}
             title={node.title}
-            excerpt={node.content.json}
+            excerpt={node.content.content}
             publishDate={node.publishedDateJP}
+            categories={node.category}
             readMore={node.slug}
             eyecatch={node.eyecatch.fluid}
             eyecatchDescription={node.eyecatch.description}
@@ -45,8 +46,17 @@ export const pageQuery = graphql`
             }
             description
           }
+          category {
+            id
+            title
+            slug
+          }
           content {
-            json
+            content
+            childMarkdownRemark {
+              html
+              htmlAst
+            }
           }
         }
       }

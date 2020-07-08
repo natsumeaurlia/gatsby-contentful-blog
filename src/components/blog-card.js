@@ -1,8 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Row } from "react-bootstrap"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { BLOCKS } from "@contentful/rich-text-types"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTags } from "@fortawesome/free-solid-svg-icons"
@@ -10,6 +8,7 @@ import { faTags } from "@fortawesome/free-solid-svg-icons"
 import CardStyles from "./blog-card.module.css"
 
 const BlogCard = props => {
+  const excerpt = props.excerpt.slice(0, 200) + "..."
   return (
     <div className={CardStyles.blog_post}>
       <div className={CardStyles.blog_thumb}>
@@ -28,10 +27,10 @@ const BlogCard = props => {
         </ul>
         <p
           style={{ textOverflow: "ellipsis" }}
-          dangerouslySetInnerHTML={{ __html: props.excerpt }}
+          dangerouslySetInnerHTML={{ __html: excerpt }}
         />
         <div className="w-100 d-flex justify-content-center">
-          <Link className="btn_orange" to={`post/${props.readMore}`}>
+          <Link className="btn_orange" to={`/post/${props.readMore}`}>
             Read More
           </Link>
         </div>
@@ -39,15 +38,17 @@ const BlogCard = props => {
           <Row>
             <div className="col-6">
               <ul className={CardStyles.post_tags}>
-                <li>
+                <li className="mr-2">
                   <FontAwesomeIcon icon={faTags}></FontAwesomeIcon>
                 </li>
-                <li>
-                  <a href="#">Beauty</a>,
-                </li>
-                <li>
-                  <a href="#">Nature</a>
-                </li>
+                {props.categories &&
+                  props.categories.map(category => (
+                    <li key={category.id}>
+                      <Link to={`/category/${category.slug}`}>
+                        {category.title}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </div>
             <div className="col-6" />

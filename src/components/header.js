@@ -3,8 +3,8 @@ import { Nav, Navbar, Container } from "react-bootstrap"
 import { Link } from "gatsby"
 
 const Header = props => (
-  <Navbar bg="light" expand="lg">
-    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+  <Navbar bg="white" expand="lg">
+    <Navbar.Brand href="/">N's Dump Logs</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

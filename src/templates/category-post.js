@@ -18,14 +18,15 @@ const Category = ({ data }) => {
             <time dateTime={category.createdAt}>{category.createdJP}</time>
           </li>
         </ul>
-        <h1 className="p-3">{category.title}</h1>
+        <h1 className="p-3">Category: {category.title}</h1>
       </div>
       {posts.map(post => {
         return (
           <BlogCard
             key={post.id}
             title={post.title}
-            excerpt={post.content.json}
+            excerpt={post.content.content}
+            categories={post.category}
             publishDate={post.publishedDateJP}
             readMore={post.slug}
             eyecatch={post.eyecatch.fluid}
@@ -53,8 +54,17 @@ export const pageQuery = graphql`
         title
         publishedDateJP: publishDate(formatString: "Y年MM月DD日")
         publishDate
+        category {
+          title
+          slug
+          id
+        }
         content {
-          json
+          content
+          childMarkdownRemark {
+            html
+            htmlAst
+          }
         }
         eyecatch {
           fluid(maxWidth: 1600) {

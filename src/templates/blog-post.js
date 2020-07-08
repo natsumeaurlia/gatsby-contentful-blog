@@ -1,8 +1,6 @@
 import React from "react"
 import { Container, Row, Button } from "react-bootstrap"
 import { Link, graphql } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { BLOCKS } from "@contentful/rich-text-types"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -19,15 +17,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
   const categories = data.contentfulBlogPost.category
   // const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
-  const blockOptions = {
-    renderNode: {
-      [BLOCKS.HEADING_2]: (node, children) => (
-        <h2 clasName={CardStyles.head2}>{children}</h2>
-      ),
-    },
-  }
 
+  const { previous, next } = pageContext
   return (
     <Layout>
       <article className={CardStyles.blog_posts + " " + CardStyles.grid_system}>
@@ -43,7 +34,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                       </time>
                     </li>
                   </ul>
-                  <h1 class="p-3">{post.title}</h1>
+                  <h1 className="p-3">{post.title}</h1>
                 </div>
                 <div className={CardStyles.blog_thumb}>
                   <Img
@@ -53,9 +44,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   />
                 </div>
                 <div className={CardStyles.down_content}>
-                  <div>
-                    {documentToReactComponents(post.content.json, blockOptions)}
-                  </div>
+                  <section
+                    className={CardStyles.blog_head}
+                    dangerouslySetInnerHTML={{
+                      __html: post.content.childMarkdownRemark.html,
+                    }}
+                  />
                   <div className={CardStyles.post_options}>
                     <Row>
                       <div className="col-6">
@@ -126,7 +120,11 @@ export const pageQuery = graphql`
         id
       }
       content {
-        json
+        content
+        childMarkdownRemark {
+          html
+          htmlAst
+        }
       }
       eyecatch {
         fluid(maxWidth: 1600) {
