@@ -16,7 +16,7 @@ const BlogIndex = ({ data }) => {
           <BlogCard
             key={node.id}
             title={node.title}
-            excerpt={node.content.content}
+            excerpt={node.content.childMarkdownRemark.excerpt}
             publishDate={node.publishedDateJP}
             categories={node.category}
             readMore={node.slug}
@@ -52,8 +52,8 @@ export const pageQuery = graphql`
             slug
           }
           content {
-            content
             childMarkdownRemark {
+              excerpt(format: PLAIN, pruneLength: 200)
               html
               htmlAst
             }

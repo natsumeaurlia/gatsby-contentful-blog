@@ -31,9 +31,14 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-contentful`,
             options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
               maxWidth: 590,
+              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
           {
@@ -56,7 +61,6 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

@@ -8,7 +8,6 @@ import { faTags } from "@fortawesome/free-solid-svg-icons"
 import CardStyles from "./blog-card.module.css"
 
 const BlogCard = props => {
-  const excerpt = props.excerpt.slice(0, 200) + "..."
   return (
     <div className={CardStyles.blog_post}>
       <div className={CardStyles.blog_thumb}>
@@ -27,7 +26,7 @@ const BlogCard = props => {
         </ul>
         <p
           style={{ textOverflow: "ellipsis" }}
-          dangerouslySetInnerHTML={{ __html: excerpt }}
+          dangerouslySetInnerHTML={{ __html: props.excerpt }}
         />
         <div className="w-100 d-flex justify-content-center">
           <Link className="btn_orange" to={`/post/${props.readMore}`}>

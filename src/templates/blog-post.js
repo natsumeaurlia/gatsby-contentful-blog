@@ -49,12 +49,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     dangerouslySetInnerHTML={{
                       __html: post.content.childMarkdownRemark.html,
                     }}
-                  />
+                  ></section>
                   <div className={CardStyles.post_options}>
                     <Row>
                       <div className="col-6">
                         <ul className={CardStyles.post_tags}>
-                          <li>
+                          <li className="mr-2">
                             <FontAwesomeIcon icon={faTags} />
                           </li>
                           {categories.map(c => (

@@ -25,7 +25,7 @@ const Category = ({ data }) => {
           <BlogCard
             key={post.id}
             title={post.title}
-            excerpt={post.content.content}
+            excerpt={post.content.childMarkdownRemark.excerpt}
             categories={post.category}
             publishDate={post.publishedDateJP}
             readMore={post.slug}
@@ -60,8 +60,8 @@ export const pageQuery = graphql`
           id
         }
         content {
-          content
           childMarkdownRemark {
+            excerpt(format: PLAIN, pruneLength: 200)
             html
             htmlAst
           }
