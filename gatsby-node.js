@@ -45,15 +45,15 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allContentfulBlogPost.edges
   const categories = result.data.allContentfulCategory.edges
 
-  posts.forEach((post, next, previous) => {
+  posts.forEach(post => {
     createPage({
       path: `post/${post.node.slug}`,
       component: blogPostTemplate,
       context: {
         id: post.node.id,
         slug: post.node.slug,
-        previous,
-        next,
+        previous: post.previous,
+        next: post.next,
       },
     })
   })
@@ -64,6 +64,25 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: category.node.id,
         slug: category.node.slug,
+      },
+    })
+  })
+
+  // 記事一覧
+  // 記事表示件数
+  const postPerpage = 10
+  const pagesCount = Math.ceil(posts.length / postPerpage) //ページ総数
+
+  Array.from({ length: pagesCount }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? "/" : `/posts/${i + 1}`,
+      component: path.resolve(`./src/templates/posts.js`),
+      context: {
+        skip: postPerpage * i,
+        limit: postPerpage,
+        currentPage: i + 1, // 現在のページ
+        isFirstPage: i + 1 === 1, // 最初のページか
+        isLastPage: i + 1 === pagesCount, // 最後のページか
       },
     })
   })

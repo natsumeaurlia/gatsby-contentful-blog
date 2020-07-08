@@ -11,16 +11,18 @@ const BlogCard = props => {
   return (
     <div className={CardStyles.blog_post}>
       <div className={CardStyles.blog_thumb}>
-        <Img
-          style={{ height: "100%" }}
-          fluid={props.eyecatch}
-          alt={props.eyecatchDescription}
-        />
+        <Link to={`/post/${props.readMore}`}>
+          <Img
+            style={{ height: "100%" }}
+            fluid={props.eyecatch}
+            alt={props.eyecatchDescription}
+          />
+        </Link>
       </div>
       <div className={CardStyles.down_content}>
-        <a href={props.readMore}>
+        <Link to={`/post/${props.readMore}`}>
           <h4>{props.title}</h4>
-        </a>
+        </Link>
         <ul className={CardStyles.post_info}>
           <li>{props.publishDate}</li>
         </ul>

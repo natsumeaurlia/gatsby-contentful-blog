@@ -1,11 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BlogCard from "../components/blog-card"
 
-const BlogIndex = ({ data }) => {
+const Posts = ({ data, location, pageContext }) => {
   // const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulBlogPost.edges
 
@@ -25,15 +27,49 @@ const BlogIndex = ({ data }) => {
           />
         )
       })}
+      <ul className="d-flex justify-content-around">
+        <li>
+          {!pageContext.isFirstPage && (
+            <Link
+              className="btn_orange"
+              to={
+                pageContext.currentPage === 2
+                  ? `/`
+                  : `/posts/${pageContext.currentPage - 1}/`
+              }
+              rel="prev"
+            >
+              <FontAwesomeIcon icon={faArrowLeft} />
+              前のページへ
+            </Link>
+          )}
+        </li>
+        <li>
+          {!pageContext.isLastPage && (
+            <Link
+              className="btn_orange"
+              to={`/posts/${pageContext.currentPage + 1}`}
+              rel="prev"
+            >
+              次のページへ
+              <FontAwesomeIcon icon={faArrowRight} />
+            </Link>
+          )}
+        </li>
+      </ul>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default Posts
 
 export const pageQuery = graphql`
-  query {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+  query($skip: Int!, $limit: Int!) {
+    allContentfulBlogPost(
+      sort: { fields: [publishDate], order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
           id

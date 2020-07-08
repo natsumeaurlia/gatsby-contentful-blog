@@ -58,8 +58,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                             <FontAwesomeIcon icon={faTags} />
                           </li>
                           {categories.map(c => (
-                            <li key={c.id} className={c.slug}>
-                              {c.title}
+                            <li key={c.id}>
+                              <Link to={`/category/${c.slug}`}>{c.title}</Link>
                             </li>
                           ))}
                         </ul>
@@ -75,29 +75,29 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </Row>
         </Container>
       </article>
-      <ul className="d-flex justify-content-around">
+      <ul className="d-flex justify-content-between">
         <li>
-          {next.slug && (
-            <Link className="btn_orange" to={`post/${next.slug}`} rel="prev">
+          {previous && (
+            <Link
+              className="btn_orange"
+              to={`/post/${previous.slug}`}
+              rel="prev"
+            >
               <FontAwesomeIcon icon={faArrowLeft} />
-              {next.title}
+              前へ
             </Link>
           )}
         </li>
         <li>
           <Link className="btn_orange" to="/" rel="top">
-            一覧へ
+            Topへ
           </Link>
         </li>
         <li>
-          {previous.slug && (
-            <Link
-              className="btn_orange"
-              to={`post/${previous.slug}`}
-              rel="prev"
-            >
+          {next && (
+            <Link className="btn_orange" to={`/post/${next.slug}`} rel="prev">
+              次へ
               <FontAwesomeIcon icon={faArrowRight} />
-              {previous.title}
             </Link>
           )}
         </li>
