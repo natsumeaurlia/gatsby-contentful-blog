@@ -1,7 +1,8 @@
 import React from "react"
-import { Container, Row } from "react-bootstrap"
+import { Container, Row, Nav } from "react-bootstrap"
 import FooterStyles from "./footer.module.css"
 import CopyRight from "./copyright"
+import { Link } from "gatsby"
 
 const Footer = () => (
   <footer className={FooterStyles.site_footer + " mt-5"}>
@@ -9,7 +10,24 @@ const Footer = () => (
       <Row>
         <div className="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p className="text-justify">現役フリーランスエンジニアのブログ</p>
+          <p className="text-justify">
+            現役フリーランスエンジニアの勉強・備忘録
+            バックエンドがメイン。フロントからインフラまで興味があり、色々やっています
+          </p>
+        </div>
+        <div className="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <Nav className={FooterStyles.footer_links}>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/privacy">
+              プライバシーポリシー
+            </Nav.Link>
+            <Nav.Link as={Link} to="/sitemap.xml">
+              サイトマップ
+            </Nav.Link>
+          </Nav>
         </div>
       </Row>
       <hr />

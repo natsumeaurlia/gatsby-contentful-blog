@@ -5,7 +5,7 @@ import Sidebar from "./sidebar"
 
 import { Container } from "react-bootstrap"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ children }) => {
   return (
     <div>
       <Header />
