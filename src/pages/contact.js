@@ -19,6 +19,7 @@ const Contact = ({ location }) => {
         <Form
           name="contact"
           method="POST"
+          action="/contact-success"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
@@ -52,6 +53,7 @@ const Contact = ({ location }) => {
             <Form.Label>お問い合わせ内容</Form.Label>
             <Form.Control as="textarea" required name="content" rows="8" />
           </Form.Group>
+          <div data-netlify-recaptcha="true"></div>
           <Button variant="primary" type="submit">
             送信
           </Button>
