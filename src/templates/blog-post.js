@@ -21,6 +21,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
   return (
     <Layout>
+      <SEO
+        title={post.title}
+        description={post.content.childMarkdownRemark.excerpt}
+        location={location}
+        blogImagePath={`https:${post.eyecatch.file.url}`}
+        ogImageWidth={post.eyecatch.file.details.image.width}
+        ogImageHeight={post.eyecatch.file.details.image.height}
+      />
       <article className={CardStyles.blog_posts + " " + CardStyles.grid_system}>
         <Container>
           <Row>
@@ -120,8 +128,8 @@ export const pageQuery = graphql`
         id
       }
       content {
-        content
         childMarkdownRemark {
+          excerpt(format: PLAIN, pruneLength: 200)
           html
           htmlAst
         }
@@ -131,6 +139,15 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid_withWebp
         }
         description
+        file {
+          details {
+            image {
+              width
+              height
+            }
+          }
+          url
+        }
       }
     }
   }

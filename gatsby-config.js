@@ -7,15 +7,15 @@ if (process.env.ENVIRONMENT !== "production") {
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `N's Dump Logs`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Natsume`,
+      summary: `フリーランスエンジニア。フロントからインフラまで幅広く携わる`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `詰まったことや学びになったことを記録していく`,
+    siteUrl: ``,
     social: {
-      twitter: `kylemathews`,
+      twitter: `natsume_aurlia`,
     },
   },
   plugins: [

@@ -10,7 +10,17 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
+const SEO = ({
+  description,
+  lang,
+  meta,
+  title,
+  blogImagePath,
+  pageImagePath,
+  ogImageWidth,
+  ogImageHeight,
+  location,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -21,6 +31,7 @@ const SEO = ({ description, lang, meta, title }) => {
             social {
               twitter
             }
+            siteUrl
           }
         }
       }
@@ -28,6 +39,11 @@ const SEO = ({ description, lang, meta, title }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const imgurl = pageImagePath
+    ? `${site.siteMetadata.siteUrl}${pageImagePath}`
+    : blogImagePath || `${site.siteMetadata.siteUrl}/images/TDV_M16_05.png`
+  const imgw = ogImageWidth || 1280
+  const imgh = ogImageHeight || 640
 
   return (
     <Helmet
@@ -46,6 +62,10 @@ const SEO = ({ description, lang, meta, title }) => {
           content: title,
         },
         {
+          property: `og:site_title`,
+          content: site.siteMetadata.title,
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
@@ -54,8 +74,20 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: imgurl,
+        },
+        {
+          property: `og:image:width`,
+          content: imgw,
+        },
+        {
+          property: `og:image:height`,
+          content: imgh,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -70,7 +102,9 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="canonical" href={location.pathname} />
+    </Helmet>
   )
 }
 

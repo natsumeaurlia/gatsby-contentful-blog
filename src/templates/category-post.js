@@ -5,13 +5,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BlogCard from "../components/blog-card"
 
-const Category = ({ data }) => {
+const Category = ({ data, location }) => {
   // const siteTitle = data.site.siteMetadata.title
   const category = data.contentfulCategory
   const posts = data.contentfulCategory.blogpost
 
   return (
     <Layout>
+      <SEO
+        title={`カテゴリ: ${category.title}の記事一覧`}
+        description={`カテゴリ: ${category.title}の記事一覧`}
+        location={location}
+      />
       <div className="text-center p-5" style={{ color: "#7B7B7B" }}>
         <ul>
           <li>
