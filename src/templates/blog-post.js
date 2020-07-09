@@ -92,7 +92,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               rel="prev"
             >
               <FontAwesomeIcon icon={faArrowLeft} />
-              前へ
+              次へ
             </Link>
           )}
         </li>
@@ -104,7 +104,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <li>
           {next && (
             <Link className="btn_orange" to={`/post/${next.slug}`} rel="prev">
-              次へ
+              前へ
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>
           )}
