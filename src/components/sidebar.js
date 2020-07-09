@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Row, Nav } from "react-bootstrap"
+import { Row, Nav } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 import Styles from "./sidebar.module.css"

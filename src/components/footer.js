@@ -1,8 +1,7 @@
 import React from "react"
-import { Container, Row, Nav } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import FooterStyles from "./footer.module.css"
 import CopyRight from "./copyright"
-import { Link } from "gatsby"
 
 const Footer = () => (
   <footer className={FooterStyles.site_footer + " mt-5"}>

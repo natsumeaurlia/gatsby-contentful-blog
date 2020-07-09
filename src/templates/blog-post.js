@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Row, Button } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

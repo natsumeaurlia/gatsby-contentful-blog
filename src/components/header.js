@@ -1,5 +1,5 @@
 import React from "react"
-import { Nav, Navbar, Container } from "react-bootstrap"
+import { Nav, Navbar } from "react-bootstrap"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Header = props => {
