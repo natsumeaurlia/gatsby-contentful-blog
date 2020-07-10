@@ -11,7 +11,8 @@ const Footer = () => (
         <div className="col-sm-12 col-md-6">
           <h6>About</h6>
           <p className="text-justify">
-            現役フリーランスエンジニアの勉強・備忘録
+            現役フリーランスエンジニアの勉強・備忘録。
+            <br />
             バックエンドがメイン。フロントからインフラまで興味があり、色々やっています
           </p>
         </div>
