@@ -6,10 +6,14 @@
 .blog_head h3,
 .blog_head h4,
 .blog_head h5 {
-  padding: 0.25em 0.5em; /*上下 左右の余白*/
-  color: #494949; /*文字色*/
-  background: transparent; /*背景透明に*/
-  border-left: solid 5px #7db4e6; /*左線*/
+  padding: 0.25em 0.5em;
+  /*上下 左右の余白*/
+  color: #494949;
+  /*文字色*/
+  background: transparent;
+  /*背景透明に*/
+  border-left: solid 5px #7db4e6;
+  /*左線*/
 }
 
 .head2 {
@@ -143,4 +147,9 @@
   .blog_thumb {
     height: 322px;
   }
+}
+
+.blog_content ul {
+  padding-left: 0.4rem;
+  list-style: inside;
 }

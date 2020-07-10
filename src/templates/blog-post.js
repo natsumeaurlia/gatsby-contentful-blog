@@ -53,7 +53,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 </div>
                 <div className={CardStyles.down_content}>
                   <section
-                    className={CardStyles.blog_head}
+                    className={
+                      CardStyles.blog_head + " " + CardStyles.blog_content
+                    }
                     dangerouslySetInnerHTML={{
                       __html: post.content.childMarkdownRemark.html,
                     }}
@@ -66,7 +68,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                             <FontAwesomeIcon icon={faTags} />
                           </li>
                           {categories.map(c => (
-                            <li key={c.id}>
+                            <li key={c.id} className="mr-2">
                               <Link to={`/category/${c.slug}`}>{c.title}</Link>
                             </li>
                           ))}

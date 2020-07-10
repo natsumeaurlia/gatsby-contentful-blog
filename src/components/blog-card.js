@@ -44,7 +44,7 @@ const BlogCard = props => {
                 </li>
                 {props.categories &&
                   props.categories.map(category => (
-                    <li key={category.id}>
+                    <li key={category.id} className="mr-2">
                       <Link to={`/category/${category.slug}`}>
                         {category.title}
                       </Link>
