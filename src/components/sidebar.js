@@ -1,8 +1,9 @@
 import React from "react"
-import { Row, Nav } from "react-bootstrap"
+import { Row, Nav, Card } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 import Styles from "./sidebar.module.css"
+import Bio from "./bio"
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
@@ -39,41 +40,54 @@ const Sidebar = () => {
     <div className={Styles.sidebar}>
       <Row>
         <div className="col-lg-12">
-          <div className={Styles.sidebar_item + " " + Styles.recent_posts}>
-            <div className={Styles.sidebar_heading}>
-              <h2>Recent Posts</h2>
-            </div>
-            <div className="content">
-              <Nav>
-                {posts.map(({ node }) => (
-                  <Nav.Link key={node.id} as={Link} to={`/post/${node.slug}`}>
-                    <h5 className={Styles.head}>{node.title}</h5>
-                    <span className={Styles.date}>{node.publishedDateJP}</span>
-                  </Nav.Link>
-                ))}
-              </Nav>
-            </div>
-          </div>
+          <Bio />
         </div>
         <div className="col-lg-12">
-          <div className={Styles.sidebar_item}>
-            <div className={Styles.sidebar_heading}>
-              <h2>Categories</h2>
-            </div>
-            <div className="content">
-              <Nav className={Styles.categories}>
-                {categories.map(({ node }) => (
-                  <Nav.Link
-                    key={node.id}
-                    as={Link}
-                    to={`/category/${node.slug}`}
-                  >
-                    {node.title}
-                  </Nav.Link>
-                ))}
-              </Nav>
-            </div>
-          </div>
+          <Card
+            className={
+              Styles.sidebar_item + " " + Styles.recent_posts + " border-0"
+            }
+          >
+            <Card.Body>
+              <Card.Title className={Styles.sidebar_heading}>
+                Recent Posts
+              </Card.Title>
+              <Card.Text>
+                <Nav>
+                  {posts.map(({ node }) => (
+                    <Nav.Link key={node.id} as={Link} to={`/post/${node.slug}`}>
+                      <h5 className={Styles.head}>{node.title}</h5>
+                      <span className={Styles.date}>
+                        {node.publishedDateJP}
+                      </span>
+                    </Nav.Link>
+                  ))}
+                </Nav>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className="col-lg-12">
+          <Card className={Styles.sidebar_item + " border-0"}>
+            <Card.Body>
+              <Card.Title className={Styles.sidebar_heading}>
+                Categories
+              </Card.Title>
+              <Card.Text>
+                <Nav className={Styles.categories}>
+                  {categories.map(({ node }) => (
+                    <Nav.Link
+                      key={node.id}
+                      as={Link}
+                      to={`/category/${node.slug}`}
+                    >
+                      {node.title}
+                    </Nav.Link>
+                  ))}
+                </Nav>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </div>
       </Row>
     </div>
