@@ -14,8 +14,9 @@ const Posts = ({ data, location, pageContext }) => {
   return (
     <Layout>
       <SEO
-        title={`記事一覧${pageContext.currentPage}ページ目`}
-        description={`記事一覧の${pageContext.currentPage}ページ目です`}
+        title="N's Dump Logs"
+        description="現役フリーランスエンジニアの勉強・備忘録。
+            バックエンドがメイン。フロントからインフラまで興味があり、色々やっています"
         location={location}
       />
       {posts.map(({ node }) => {

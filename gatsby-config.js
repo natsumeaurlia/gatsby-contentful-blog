@@ -13,7 +13,7 @@ module.exports = {
       summary: `フリーランスエンジニア。フロントからインフラまで幅広く携わる`,
     },
     description: `詰まったことや学びになったことを記録していく`,
-    siteUrl: `https://amazing-hamilton-40429d.netlify.app`,
+    siteUrl: `https://c-blog.collapse-natsu.com/`,
     social: {
       twitter: `natsume_aurlia`,
     },
