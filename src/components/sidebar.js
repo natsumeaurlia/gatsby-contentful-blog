@@ -37,7 +37,7 @@ const Sidebar = () => {
   const posts = data.allContentfulBlogPost.edges
   const categories = data.allContentfulCategory.edges
   return (
-    <div className={Styles.sidebar}>
+    <div className="ml-lg-3">
       <Row>
         <div className="col-lg-12">
           <Bio />
