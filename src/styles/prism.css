@@ -1,0 +1,29 @@
+:not(pre) > code[class*="language-"] {
+  background-color: #eee !important;
+  color: #333;
+  padding: 0.1em 0.4em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+}
+
+pre[class*="language-"] {
+  margin: 0px !important;
+}
+
+.gatsby-code-title {
+  display: inline;
+  position: relative;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  color: #eee;
+  background: #777;
+  border-top-right-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  padding: 3px;
+  top: 1px;
+  word-break: break-all;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #364549;
+}

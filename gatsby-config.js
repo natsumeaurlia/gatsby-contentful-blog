@@ -37,6 +37,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-code-titles`,
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
@@ -54,8 +55,13 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-prismjs-title`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              showLineNumbers: true,
+            },
+          },
           `gatsby-remark-copy-linked-files`,
         ],
       },
