@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Nav, Card } from "react-bootstrap"
+import { Row, Nav, Card, Container } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 import Styles from "./sidebar.module.css"
@@ -37,7 +37,7 @@ const Sidebar = () => {
   const posts = data.allContentfulBlogPost.edges
   const categories = data.allContentfulCategory.edges
   return (
-    <div className="ml-lg-3">
+    <Container className="px-md-0 px-sm-0">
       <Row>
         <div className="col-lg-12">
           <Bio />
@@ -90,7 +90,7 @@ const Sidebar = () => {
           </Card>
         </div>
       </Row>
-    </div>
+    </Container>
   )
 }
 

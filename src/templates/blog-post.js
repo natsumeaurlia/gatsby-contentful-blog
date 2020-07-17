@@ -10,13 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 import CardStyles from "./blog-post.module.css"
-import Layout from "../components/layout"
+import Layout from "../components/postLayout"
 import SEO from "../components/seo"
+import SNS from "../components/sns"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
   const categories = data.contentfulBlogPost.category
-  // const siteTitle = data.site.siteMetadata.title
 
   const { previous, next } = pageContext
   return (
@@ -60,8 +60,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                       __html: post.content.childMarkdownRemark.html,
                     }}
                   ></section>
+                  <div className="border-top" />
                   <div className={CardStyles.post_options}>
-                    <Row>
+                    <Row className="d-lg-none d-flex justify-content-center mt-5">
+                      <SNS />
+                    </Row>
+                    <Row className="mt-5">
                       <div className="col-6">
                         <ul className={CardStyles.post_tags}>
                           <li className="mr-2">
@@ -74,9 +78,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                           ))}
                         </ul>
                       </div>
-                      <div className="col-6">
-                        <ul className={CardStyles.post_share}></ul>
-                      </div>
                     </Row>
                   </div>
                 </div>
@@ -85,7 +86,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </Row>
         </Container>
       </article>
-      <ul className="d-flex justify-content-between">
+      <ul className="container px-0 d-flex justify-content-between">
         <li>
           {previous && (
             <Link

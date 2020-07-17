@@ -22,7 +22,7 @@ const Header = props => {
     `
   )
   return (
-    <Navbar fixed="top" bg="light" className="py-2 shadow-sm" expand="lg">
+    <Navbar bg="light" className="py-2 shadow-sm" expand="lg">
       <Navbar.Brand href="/">
         <div className="d-flex">
           <Image
