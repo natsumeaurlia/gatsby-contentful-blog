@@ -37,7 +37,7 @@ const Sidebar = () => {
   const posts = data.allContentfulBlogPost.edges
   const categories = data.allContentfulCategory.edges
   return (
-    <Container className="px-md-0 px-sm-0">
+    <Container fluid className="px-0">
       <Row>
         <div className="col-lg-12">
           <Bio />

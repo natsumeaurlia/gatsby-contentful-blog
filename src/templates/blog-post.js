@@ -32,7 +32,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <article className={CardStyles.blog_posts + " " + CardStyles.grid_system}>
         <Container>
           <Row>
-            <div className="col-lg-12 px-0">
+            <div className="col-lg-12">
               <div className={CardStyles.blog_post}>
                 <div className={CardStyles.title_group + " text-center p-5"}>
                   <ul className={CardStyles.post_info}>
@@ -86,7 +86,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </Row>
         </Container>
       </article>
-      <ul className="container px-0 d-flex justify-content-between">
+      <ul className="container d-flex justify-content-between">
         <li>
           {previous && (
             <Link
