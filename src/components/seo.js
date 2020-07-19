@@ -86,11 +86,15 @@ const SEO = ({
           content: imgh,
         },
         {
+          property: `twitter:image`,
+          content: imgurl,
+        },
+        {
           name: `twitter:card`,
           content: `summary_large_image`,
         },
         {
-          name: `twitter:creator`,
+          name: `twitter:site`,
           content: site.siteMetadata.social.twitter,
         },
         {

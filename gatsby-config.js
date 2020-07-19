@@ -15,7 +15,7 @@ module.exports = {
     description: `詰まったことや学びになったことを記録していく`,
     siteUrl: `https://c-blog.collapse-natsu.com/`,
     social: {
-      twitter: `natsume_aurlia`,
+      twitter: `@natsume_aurlia`,
     },
   },
   plugins: [
