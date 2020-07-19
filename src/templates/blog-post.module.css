@@ -27,6 +27,10 @@
   border-bottom: 4px solid #7db4e6;
 }
 
+.blog_content img {
+  margin: 0.5rem 0px;
+}
+
 .head2 {
   background: #f7f7f7;
   padding: 20px 15px 18px;
