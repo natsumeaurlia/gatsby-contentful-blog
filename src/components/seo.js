@@ -76,7 +76,7 @@ const SEO = ({
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `article`,
         },
         {
           property: `og:image`,
@@ -100,6 +100,10 @@ const SEO = ({
         },
         {
           name: `twitter:creator`,
+          content: site.siteMetadata.social.twitter,
+        },
+        {
+          name: `twitter:site`,
           content: site.siteMetadata.social.twitter,
         },
         {
