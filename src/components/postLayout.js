@@ -19,8 +19,8 @@ const PostLayout = ({ children }) => {
                 <SNS className="d-flex flex-lg-column" />
               </div>
             </div>
-            <div className="col-lg-7 col-md-12">{children}</div>
-            <div className="col-lg-4 mt-3 mt-lg-0">
+            <div className="col-lg-8 col-md-12">{children}</div>
+            <div className="col-lg-3 mt-3 mt-lg-0">
               <Sidebar />
             </div>
           </div>

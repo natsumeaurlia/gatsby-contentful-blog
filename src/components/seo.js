@@ -41,7 +41,7 @@ const SEO = ({
   const metaDescription = description || site.siteMetadata.description
   const imgurl = pageImagePath
     ? `${site.siteMetadata.siteUrl}${pageImagePath}`
-    : blogImagePath || `${site.siteMetadata.siteUrl}/images/icon.png`
+    : blogImagePath || `${site.siteMetadata.siteUrl}/assets/images/icon.png`
   const imgw = ogImageWidth || 1280
   const imgh = ogImageHeight || 640
 

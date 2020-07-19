@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     <div>
       <Header />
       <section style={{ marginTop: "9rem" }}>
-        <Container fluid>
+        <Container>
           <div className="row">
             <div className="col-lg-1" />
             <div className="col-lg-7 col-md-12">{children}</div>

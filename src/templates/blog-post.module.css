@@ -2,18 +2,29 @@
   color: #7b7b7b;
 }
 
-.blog_head h2,
-.blog_head h3,
-.blog_head h4,
-.blog_head h5 {
-  padding: 0.25em 0.5em;
-  /*上下 左右の余白*/
+.blog_head h2 {
+  padding: 20px 15px 18px;
+  margin: 4rem 0px;
   color: #494949;
-  /*文字色*/
-  background: transparent;
+  background-color: #f7f7f7;
   /*背景透明に*/
   border-left: solid 5px #7db4e6;
-  /*左線*/
+  font-weight: bold;
+}
+
+.blog_head h3 {
+  margin: 4rem 0px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  padding: 0px 1rem 0px;
+  border-left: 8px solid #7db4e6;
+  color: #494949;
+  font-weight: 600;
+}
+
+.blog_head h4 {
+  margin: 4rem 0px;
+  border-bottom: 4px solid #7db4e6;
 }
 
 .head2 {
