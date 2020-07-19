@@ -38,6 +38,7 @@ const SEO = ({
     `
   )
 
+  const currentUrl = typeof window !== "undefined" ? window.location.href : ""
   const metaDescription = description || site.siteMetadata.description
   const imgurl = pageImagePath
     ? `${site.siteMetadata.siteUrl}${pageImagePath}`
@@ -56,6 +57,10 @@ const SEO = ({
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          property: `og:url`,
+          content: currentUrl,
         },
         {
           property: `og:title`,
@@ -94,7 +99,7 @@ const SEO = ({
           content: `summary_large_image`,
         },
         {
-          name: `twitter:site`,
+          name: `twitter:creator`,
           content: site.siteMetadata.social.twitter,
         },
         {
