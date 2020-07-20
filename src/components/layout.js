@@ -10,11 +10,11 @@ const Layout = ({ children }) => {
     <div>
       <Header />
       <section style={{ marginTop: "9rem" }}>
-        <Container>
+        <Container fluid>
           <div className="row">
-            <div className="col-lg-1" />
-            <div className="col-lg-7 col-md-12">{children}</div>
-            <div className="col-lg-4 mt-3 mt-lg-0">
+            <div className="col-lg-1"></div>
+            <div className="col-lg-8 col-md-12">{children}</div>
+            <div className="col-lg-3 mt-3 mt-lg-0">
               <Sidebar />
             </div>
           </div>
