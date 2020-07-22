@@ -12,7 +12,7 @@ const PostLayout = ({ children }) => {
     <div>
       <Header />
       <section style={{ marginTop: "9rem" }}>
-        <Container fluid>
+        <Container fluid className="px-0">
           <div className="row">
             <div className="col-lg-1" id="sticky-sidebar">
               <div class="sticky-top px-2 pt-5 d-none d-lg-block">
