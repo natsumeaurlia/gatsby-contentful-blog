@@ -18,11 +18,6 @@ const Category = ({ data, location }) => {
         location={location}
       />
       <div className="text-center p-5" style={{ color: "#7B7B7B" }}>
-        <ul>
-          <li>
-            <time dateTime={category.createdAt}>{category.createdJP}</time>
-          </li>
-        </ul>
         <h1 className="p-3">Category: {category.title}</h1>
       </div>
       {posts.map(post => {
