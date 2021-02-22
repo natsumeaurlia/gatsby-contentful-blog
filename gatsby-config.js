@@ -39,6 +39,12 @@ module.exports = {
         plugins: [
           `gatsby-remark-code-titles`,
           {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
+          },
+          {
             resolve: `gatsby-remark-images-contentful`,
             options: {
               // It's important to specify the maxWidth (in pixels) of
