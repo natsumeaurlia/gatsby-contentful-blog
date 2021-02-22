@@ -98,6 +98,7 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
+    'gatsby-plugin-sass',
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {

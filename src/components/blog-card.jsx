@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTags } from "@fortawesome/free-solid-svg-icons"
 
-import CardStyles from "./blog-card.module.css"
+import CardStyles from "./blog-card.module.scss"
 
 const BlogCard = props => {
   return (

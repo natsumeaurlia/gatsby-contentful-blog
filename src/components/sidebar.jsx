@@ -2,7 +2,7 @@ import React from "react"
 import { Row, Nav, Card, Container } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
-import Styles from "./sidebar.module.css"
+import Styles from "./sidebar.module.scss"
 import Bio from "./bio"
 
 const Sidebar = () => {

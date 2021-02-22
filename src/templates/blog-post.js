@@ -9,7 +9,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons"
 
-import CardStyles from "./blog-post.module.css"
+import CardStyles from "./blog-post.module.scss"
 import Layout from "../components/postLayout"
 import SEO from "../components/seo"
 import SNS from "../components/sns"
