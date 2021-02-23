@@ -1,4 +1,3 @@
-// ファイルの先頭に以下の内容を追加
 const dotenv = require("dotenv")
 
 if (process.env.ENVIRONMENT !== "production") {
@@ -98,7 +97,8 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
-    'gatsby-plugin-sass',
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
