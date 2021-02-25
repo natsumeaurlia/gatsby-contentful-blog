@@ -9,7 +9,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons"
 
-import CardStyles from "./blog-post.module.scss"
+import BlogPostStyles from "./blog-post.module.scss"
 import Layout from "../components/postLayout"
 import SEO from "../components/seo"
 import SNS from "../components/sns"
@@ -29,13 +29,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         ogImageWidth={post.eyecatch.file.details.image.width}
         ogImageHeight={post.eyecatch.file.details.image.height}
       />
-      <article className={CardStyles.blog_posts + " " + CardStyles.grid_system}>
+      <article className={BlogPostStyles.blog_posts + " " + BlogPostStyles.grid_system}>
         <Container>
           <Row>
             <div className="col-lg-12">
-              <div className={CardStyles.blog_post}>
-                <div className={CardStyles.title_group + " text-center p-5"}>
-                  <ul className={CardStyles.post_info}>
+              <div className={BlogPostStyles.blog_post}>
+                <div className={BlogPostStyles.title_group + " text-center p-5"}>
+                  <ul className={BlogPostStyles.post_info}>
                     <li>
                       <time dateTime={post.publishDate}>
                         {post.publishedDateJP}
@@ -44,30 +44,30 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   </ul>
                   <h1 className="p-3">{post.title}</h1>
                 </div>
-                <div className={CardStyles.blog_thumb}>
+                <div className={BlogPostStyles.blog_thumb}>
                   <Img
                     style={{ height: "100%" }}
                     fluid={post.eyecatch.fluid}
                     alt={post.eyecatch.description}
                   />
                 </div>
-                <div className={CardStyles.down_content}>
+                <div className={BlogPostStyles.down_content}>
                   <section
                     className={
-                      CardStyles.blog_head + " " + CardStyles.blog_content
+                      BlogPostStyles.blog_head + " " + BlogPostStyles.blog_content
                     }
                     dangerouslySetInnerHTML={{
                       __html: post.content.childMarkdownRemark.html,
                     }}
                   ></section>
                   <div className="border-top" />
-                  <div className={CardStyles.post_options}>
+                  <div className={BlogPostStyles.post_options}>
                     <Row className="d-lg-none d-flex justify-content-center mt-5">
                       <SNS />
                     </Row>
                     <Row className="mt-5">
                       <div className="col-6">
-                        <ul className={CardStyles.post_tags}>
+                        <ul className={BlogPostStyles.post_tags}>
                           <li className="mr-2">
                             <FontAwesomeIcon icon={faTags} />
                           </li>
