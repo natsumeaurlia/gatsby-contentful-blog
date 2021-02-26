@@ -3,31 +3,26 @@ import Header from "./header"
 import Footer from "./footer"
 import Sidebar from "./sidebar"
 
-import { Container } from "react-bootstrap"
-
-import SNS from "../components/sns"
+import { Container, Row, Col } from "react-bootstrap"
 
 const PostLayout = ({ children }) => {
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <section style={{ marginTop: "9rem" }}>
         <Container fluid className="px-0">
-          <div className="row">
-            <div className="col-lg-1" id="sticky-sidebar">
-              <div class="sticky-top px-2 pt-5 d-none d-lg-block">
-                <SNS className="d-flex flex-lg-column" />
-              </div>
-            </div>
-            <div className="col-lg-8 col-md-12">{children}</div>
-            <div className="col-lg-3 mt-3 mt-lg-0">
+          <Row>
+            <Col lg={8} md={12}>
+              {children}
+            </Col>
+            <Col lg={4} className="mt-3 mt-lg-0">
               <Sidebar />
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Container>
       </section>
       <Footer />
-    </div>
+    </React.Fragment>
   )
 }
 
