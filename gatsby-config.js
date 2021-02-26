@@ -5,6 +5,9 @@ if (process.env.ENVIRONMENT !== "production") {
 }
 
 module.exports = {
+  flags: {
+    THE_FLAG: false
+  },
   siteMetadata: {
     title: `N's Dump Logs`,
     author: {
@@ -41,6 +44,17 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               elements: [`h2`, `h3`, `h4`, `h5`],
+            },
+          },
+          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              ordered: false,
+              fromHeading: 2,
+              toHeading: 6,
+              className: "table-of-contents"
             },
           },
           {
