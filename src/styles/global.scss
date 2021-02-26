@@ -1,3 +1,5 @@
+@import "./variable.scss";
+
 /* 
 
 TemplateMo 551 Stand Blog
@@ -55,5 +57,5 @@ h6 {
 
 .btn_orange:hover {
   background-color: #f48840;
-  color: #20232e !important;
+  color: $black !important;
 }

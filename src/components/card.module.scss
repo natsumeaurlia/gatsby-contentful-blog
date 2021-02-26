@@ -1,7 +1,7 @@
 @import "../styles/responsive.scss";
+@import "../styles/variable.scss";
 
 .post {
-  $normalBlack: rgb(51, 51, 51);
   background-color: white;
   border: 1px solid #eee;
   width: 48%;
@@ -25,13 +25,13 @@
   .content {
     min-height: 180px;
     .title {
-      color: $normalBlack;
+      color: $black;
       font-size: 1.25rem;
       line-height: 2rem;
     }
 
     .excerpt {
-      color: $normalBlack;
+      color: $black;
       font-size: 0.75rem;
       line-height: 1.25rem;
       word-break: break-all;
@@ -43,10 +43,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    color: #aaa;
+    color: $gray;
     font-size: 0.8rem;
     a {
-      color: #aaa;
+      color: $gray;
     }
   }
 }
