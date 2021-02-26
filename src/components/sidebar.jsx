@@ -40,9 +40,6 @@ const Sidebar = () => {
     <Container>
       <Row>
         <div className="col-lg-12">
-          <Bio />
-        </div>
-        <div className="col-lg-12">
           <Card
             className={
               Styles.sidebar_item + " " + Styles.recent_posts + " border-0"
@@ -50,7 +47,7 @@ const Sidebar = () => {
           >
             <Card.Body>
               <Card.Title className={Styles.sidebar_heading}>
-                Recent Posts
+                最近の投稿
               </Card.Title>
               <Card.Text>
                 <Nav>
@@ -71,7 +68,7 @@ const Sidebar = () => {
           <Card className={Styles.sidebar_item + " border-0"}>
             <Card.Body>
               <Card.Title className={Styles.sidebar_heading}>
-                Categories
+                カテゴリー
               </Card.Title>
               <Card.Text>
                 <Nav className={Styles.categories}>

@@ -9,7 +9,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons"
 
-import BlogPostStyles from "./blog-post.module.scss"
+import BlogPostStyles from "./post.module.scss"
 import Layout from "../components/postLayout"
 import SEO from "../components/seo"
 import SNS from "../components/sns"
