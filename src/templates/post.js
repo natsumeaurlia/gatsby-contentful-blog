@@ -30,53 +30,49 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         ogImageWidth={post.eyecatch.file.details.image.width}
         ogImageHeight={post.eyecatch.file.details.image.height}
       />
-      <Container as="article">
-        <Row>
-          <Col>
-            <div className={BlogPostStyles.blog_post}>
-              <div className={BlogPostStyles.title_group + " text-center py-5 px-3"}>
-                <ul className={BlogPostStyles.post_info}>
-                  <li>
-                    <time dateTime={post.publishDate}>
-                      {post.publishedDateJP}
-                    </time>
+      <article>
+        <div className={BlogPostStyles.blog_post}>
+          <div className={BlogPostStyles.title_group + " text-center py-5 px-3"}>
+            <ul className={BlogPostStyles.post_info}>
+              <li>
+                <time dateTime={post.publishDate}>
+                  {post.publishedDateJP}
+                </time>
+              </li>
+            </ul>
+            <h1 className="mt-3">{post.title}</h1>
+          </div>
+          <div className={BlogPostStyles.blog_thumb}>
+            <Img
+              style={{ height: "100%" }}
+              fluid={post.eyecatch.fluid}
+              alt={post.eyecatch.description}
+            />
+          </div>
+          <div className={BlogPostStyles.blog_content}>
+            <section
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
+            <div className="border-top" />
+            <Row className="mt-5">
+              <div className="col-6">
+                <ul className={BlogPostStyles.post_category}>
+                  <li className="mr-2">
+                    <FontAwesomeIcon icon={faTags} />
                   </li>
+                  {categories.map(c => (
+                    <li key={c.id} className="mr-2">
+                      <Link to={`/category/${c.slug}`}>{c.title}</Link>
+                    </li>
+                  ))}
                 </ul>
-                <h1 className="mt-3">{post.title}</h1>
               </div>
-              <div className={BlogPostStyles.blog_thumb}>
-                <Img
-                  style={{ height: "100%" }}
-                  fluid={post.eyecatch.fluid}
-                  alt={post.eyecatch.description}
-                />
-              </div>
-              <div className={BlogPostStyles.blog_content}>
-                <section
-                  dangerouslySetInnerHTML={{
-                    __html: post.content.childMarkdownRemark.html,
-                  }}
-                />
-                <div className="border-top" />
-                <Row className="mt-5">
-                  <div className="col-6">
-                    <ul className={BlogPostStyles.post_category}>
-                      <li className="mr-2">
-                        <FontAwesomeIcon icon={faTags} />
-                      </li>
-                      {categories.map(c => (
-                        <li key={c.id} className="mr-2">
-                          <Link to={`/category/${c.slug}`}>{c.title}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Row>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+            </Row>
+          </div>
+        </div>
+      </article>
       <ul className="container d-flex justify-content-between">
         <li>
           {previous && (

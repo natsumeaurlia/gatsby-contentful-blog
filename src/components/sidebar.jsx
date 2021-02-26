@@ -40,11 +40,7 @@ const Sidebar = () => {
     <Container>
       <Row>
         <div className="col-lg-12">
-          <Card
-            className={
-              Styles.sidebar_item + " " + Styles.recent_posts + " border-0"
-            }
-          >
+          <Card className={`${Styles.recent_posts} border-0`}>
             <Card.Body>
               <Card.Title className={Styles.sidebar_heading}>
                 最近の投稿

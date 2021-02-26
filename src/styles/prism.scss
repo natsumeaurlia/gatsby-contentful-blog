@@ -1,13 +1,22 @@
+@import "./responsive.scss";
+
 :not(pre) > code[class*="language-"] {
   background-color: #eee !important;
   color: #333;
   padding: 0.1em 0.4em;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
     monospace;
+
+  @include sm {
+    font-size: 14px;
+  }
 }
 
 pre[class*="language-"] {
   margin: 0px !important;
+  @include sm {
+    font-size: 14px;
+  }
 }
 
 .gatsby-code-title {
@@ -21,6 +30,9 @@ pre[class*="language-"] {
   padding: 3px;
   top: 1px;
   word-break: break-all;
+  @include sm {
+    font-size: 14px;
+  }
 }
 
 :not(pre) > code[class*="language-"],

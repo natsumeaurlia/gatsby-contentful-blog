@@ -19,19 +19,23 @@
   margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid $whitegray-100;
-}
 
-.recent_posts:last-child {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  border-bottom: none;
+  a {
+    padding: 0px !important;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0px;
+      border-bottom: none;
+    }
+  }
 }
 
 .head {
   font-size: 14px;
   font-weight: 900;
   color: $black;
-  line-height: 30px;
+  line-height: 24px;
   transition: all 0.3s;
 }
 
@@ -43,7 +47,6 @@
   display: block;
   font-size: 14px;
   color: $gray;
-  margin-top: 8px;
 }
 
 /* カテゴリ */
