@@ -18,6 +18,11 @@ const BlogCard = props => {
           />
         </div>
         <div className={CardStyles.content}>
+          <div>
+            <ul className={`${CardStyles.date} mt-2`}>
+              <li>{props.publishDate}</li>
+            </ul>
+          </div>
           <h3 className={`${CardStyles.title} mt-3`}>{props.title}</h3>
           <p
             className={`${CardStyles.excerpt} mt-3`}
@@ -25,11 +30,6 @@ const BlogCard = props => {
           />
         </div>
       </Link>
-      <div>
-        <ul className={CardStyles.post_info}>
-          <li>{props.publishDate}</li>
-        </ul>
-      </div>
       <div className="mt-3">
         <ul className={CardStyles.category}>
           <li className="mr-2">
