@@ -5,8 +5,6 @@ import {
   FacebookIcon,
   TwitterShareButton,
   TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
   LineShareButton,
   LineIcon,
   PocketShareButton,

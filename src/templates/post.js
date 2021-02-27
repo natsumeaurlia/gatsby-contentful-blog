@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Row } from "react-bootstrap"
+import { Row } from "react-bootstrap"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,8 +12,6 @@ import {
 import BlogPostStyles from "./post.module.scss"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import SNS from "../components/sns"
-import { Col } from "react-bootstrap"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
@@ -75,11 +73,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </article>
       <ul className="container d-flex justify-content-between">
         <li>
-          {previous && (
+          {next && (
             <Link
               className="btn_orange"
-              to={`/post/${previous.slug}`}
-              rel="prev"
+              to={`/post/${next.slug}`}
+              rel="next"
             >
               <FontAwesomeIcon icon={faArrowLeft} />
               次へ
@@ -92,8 +90,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </Link>
         </li>
         <li>
-          {next && (
-            <Link className="btn_orange" to={`/post/${next.slug}`} rel="prev">
+          {previous && (
+            <Link className="btn_orange" to={`/post/${previous.slug}`} rel="prev">
               前へ
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>
