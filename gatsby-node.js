@@ -52,8 +52,9 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: post.node.id,
         slug: post.node.slug,
-        previous: post.previous,
-        next: post.next,
+        // contentfulはnextが古い投稿、previousになるので逆にする
+        previous: post.next,
+        next: post.previous,
       },
     })
   })
@@ -88,15 +89,15 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === `allContentfulBlogPost`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value: `slug`,
-    })
-  }
-}
+//   if (node.internal.type === `allContentfulBlogPost`) {
+//     const value = createFilePath({ node, getNode })
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value: `slug`,
+//     })
+//   }
+// }
