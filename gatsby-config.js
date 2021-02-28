@@ -6,7 +6,12 @@ if (process.env.ENVIRONMENT !== "production") {
 
 module.exports = {
   flags: {
-    THE_FLAG: false
+    DEV_SSR: false,
+    FAST_DEV: true,
+    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    FAST_REFRESH: false,
+    PARALLEL_SOURCING: true
   },
   siteMetadata: {
     title: `N's Dump Logs`,
