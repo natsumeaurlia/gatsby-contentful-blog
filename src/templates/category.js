@@ -30,8 +30,7 @@ const Category = ({ data, location }) => {
               categories={post.category}
               publishDate={post.publishedDateJP}
               readMore={post.slug}
-              eyecatch={post.eyecatch.fluid}
-              eyecatchDescription={post.eyecatch.description}
+              eyecatch={post.eyecatch}
             />
           )
         })}
