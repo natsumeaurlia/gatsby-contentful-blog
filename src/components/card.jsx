@@ -11,11 +11,15 @@ const BlogCard = props => {
     <article className={`${CardStyles.post} mt-4`}>
       <Link to={`/post/${props.readMore}`}>
         <div className={CardStyles.thumbnailContainer}>
-          <Img
-            className={CardStyles.thumbnail}
-            fluid={props.eyecatch}
-            alt={props.eyecatchDescription}
-          />
+          {props.eyecatch ? (
+            <Img
+              className={CardStyles.thumbnail}
+              fluid={props.eyecatch.fluid}
+              alt={props.eyecatch.description}
+            />
+          ) : (
+            <div className={CardStyles.thumbnail}></div>
+          )}
         </div>
         <div className={CardStyles.content}>
           <div>

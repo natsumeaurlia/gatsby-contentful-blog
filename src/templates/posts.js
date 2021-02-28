@@ -29,8 +29,7 @@ const Posts = ({ data, location, pageContext }) => {
               publishDate={node.publishedDateJP}
               categories={node.category}
               readMore={node.slug}
-              eyecatch={node.eyecatch.fluid}
-              eyecatchDescription={node.eyecatch.description}
+              eyecatch={node.eyecatch}
             />
           )
         })}
