@@ -28,7 +28,7 @@ const Posts = ({ data, location, pageContext }) => {
               excerpt={node.content.childMarkdownRemark.excerpt}
               publishDate={node.publishedDateJP}
               categories={node.category}
-              readMore={node.slug}
+              slug={node.slug}
               eyecatch={node.eyecatch}
             />
           )
