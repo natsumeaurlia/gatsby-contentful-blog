@@ -29,7 +29,7 @@ const Category = ({ data, location }) => {
               excerpt={post.content.childMarkdownRemark.excerpt}
               categories={post.category}
               publishDate={post.publishedDateJP}
-              readMore={post.slug}
+              slug={post.slug}
               eyecatch={post.eyecatch}
             />
           )
