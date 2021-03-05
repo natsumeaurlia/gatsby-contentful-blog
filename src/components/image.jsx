@@ -1,8 +1,10 @@
 import React from "react"
+import PropTypes from "prop-types"
+
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-export default props => {
+const Image = (props) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
       allImageSharp {
@@ -16,17 +18,31 @@ export default props => {
     }
   `)
 
-  return (
-    <figure>
-      <Img
-        fluid={
-          allImageSharp.nodes.find(n => n.fluid.originalName === props.filename)
-            .fluid
-        }
-        alt={props.alt}
-        style={props.style}
-        className={props.className}
-      />
-    </figure>
+  // 拡張子削除して検索
+  const fluidObj = allImageSharp.nodes.find(
+    node =>
+      String(node.fluid.originalName).replace(/\.[^/.]+$/, "") ===
+      String(props.fileName).replace(/\.[^/.]+$/, "")
   )
+
+  return (
+    <React.Fragment>
+      {fluidObj ? (
+        <Img
+          fluid={fluidObj.fluid}
+          alt={props.alt}
+          style={props.style}
+          className={props.className}
+        />
+      ) : (
+        ""
+      )}
+    </React.Fragment>
+  )
+}
+
+export default Image
+
+Image.propTypes = {
+  fileName: PropTypes.string.isRequired,
 }

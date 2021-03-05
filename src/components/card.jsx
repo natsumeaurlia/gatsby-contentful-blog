@@ -3,13 +3,15 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTags } from "@fortawesome/free-solid-svg-icons"
+import PropTypes from "prop-types"
+import Image from "./image"
 
 import CardStyles from "./card.module.scss"
 
 const BlogCard = props => {
   return (
     <article className={`${CardStyles.post} mt-4`}>
-      <Link to={`/post/${props.readMore}`}>
+      <Link to={`/post/${props.slug}`}>
         <div className={CardStyles.thumbnailContainer}>
           {props.eyecatch ? (
             <Img
@@ -18,7 +20,11 @@ const BlogCard = props => {
               alt={props.eyecatch.description}
             />
           ) : (
-            <div className={CardStyles.thumbnail}></div>
+            <Image
+              className={CardStyles.thumbnail}
+              fileName={props.title}
+              alt={props.title}
+            />
           )}
         </div>
         <div className={CardStyles.content}>
@@ -49,6 +55,16 @@ const BlogCard = props => {
       </div>
     </article>
   )
+}
+
+BlogCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  excerpt: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired,
+  categories: PropTypes.array,
+  slug: PropTypes.string.isRequired,
+  eyecatch: PropTypes.object,
+  externalFluidImage: PropTypes.object,
 }
 
 export default BlogCard

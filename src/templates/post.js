@@ -16,6 +16,9 @@ import SEO from "../components/seo"
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
   const categories = data.contentfulBlogPost.category
+  const imagePath = post.eyecatch ? `https:${post.eyecatch.file.url}` : `${pageContext.externalFluidImage.src}`;
+  const width = post.eyecatch ? post.eyecatch.file.details.image.width : {};
+  const height = post.eyecatch ? post.eyecatch.file.details.image.height : {};
 
   const { previous, next } = pageContext
   return (
@@ -24,9 +27,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.title}
         description={post.content.childMarkdownRemark.excerpt}
         location={location}
-        blogImagePath={`https:${post.eyecatch.file.url}`}
-        ogImageWidth={post.eyecatch.file.details.image.width}
-        ogImageHeight={post.eyecatch.file.details.image.height}
+        blogImagePath={imagePath}
+        ogImageWidth={width}
+        ogImageHeight={height}
       />
       <article>
         <div className={BlogPostStyles.blog_post}>
@@ -41,11 +44,19 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <h1 className="mt-3">{post.title}</h1>
           </div>
           <div className={BlogPostStyles.blog_thumb}>
-            <Img
-              style={{ height: "100%" }}
-              fluid={post.eyecatch.fluid}
-              alt={post.eyecatch.description}
-            />
+            {post.eyecatch ? (
+              <Img
+                style={{ height: "100%" }}
+                fluid={post.eyecatch.fluid}
+                alt={post.eyecatch.description}
+              />
+            ) : (
+                <Img
+                  style={{ height: "100%" }}
+                  fluid={pageContext.externalFluidImage}
+                  alt={post.title}
+                />
+              )}
           </div>
           <div className={BlogPostStyles.blog_content}>
             <section
