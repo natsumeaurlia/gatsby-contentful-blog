@@ -17,8 +17,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
   const categories = data.contentfulBlogPost.category
   const imagePath = post.eyecatch ? `https:${post.eyecatch.file.url}` : `${pageContext.externalFluidImage.src}`;
-  const width = post.eyecatch ? post.eyecatch.file.details.image.width : {};
-  const height = post.eyecatch ? post.eyecatch.file.details.image.height : {};
+  const width = post.eyecatch ? post.eyecatch.file.details.image.width : 1280;
+  const height = post.eyecatch ? post.eyecatch.file.details.image.height : 640;
 
   const { previous, next } = pageContext
   return (

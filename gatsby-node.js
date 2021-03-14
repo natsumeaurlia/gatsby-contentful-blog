@@ -15,6 +15,9 @@ exports.createPages = async ({ graphql, actions, getCache, createNodeId, cache, 
               id
               slug
               title
+              icons {
+                values
+              }
             }
             next {
               title

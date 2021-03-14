@@ -10,12 +10,18 @@ if (process.env.ENVIRONMENT !== "production") {
 module.exports = async (pages, getCache, createNode, createNodeId, reporter, cache) => {
     const featureImages = new Map();
 
-    await Promise.all(pages.map(async (page) => {
+    for (page of pages) {
         const { node } = page;
-        const url = `${process.env.OPEN_GRAPH_GENERATE_API}${encodeURIComponent(node.title)}.png?md=1&fontSize=100px&background&fontColor=#777`
+        const icons = node.icons;
+        let url = `${process.env.OPEN_GRAPH_GENERATE_API}${encodeURIComponent(node.title)}.png?md=1&fontSize=100px&background&fontColor=#777`
+        if (icons && icons.values) {
+            for (icon of icons.values) {
+                url = url + '&icons=' + encodeURIComponent(icon);
+            }
+        }
 
         if (featureImages.has(node.slug) || node.eyecatch) {
-            return;
+            continue;
         }
 
         const fileNode = await createRemoteFileNode({
@@ -34,6 +40,7 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
         });
 
         featureImages.set(node.slug, generatedImage);
-    }))
+        console.info('generate image from api', decodeURI(url));
+    }
     return featureImages;
 };

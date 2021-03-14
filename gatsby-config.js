@@ -20,7 +20,7 @@ module.exports = {
       summary: `フリーランスエンジニア。フロントからインフラまで幅広く携わる`,
     },
     description: `詰まったことや学びになったことを記録していく`,
-    siteUrl: `https://c-blog.collapse-natsu.com/`,
+    siteUrl: process.env.SITE_URL,
     social: {
       twitter: `@natsume_aurlia`,
     },
