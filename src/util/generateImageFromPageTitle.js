@@ -16,7 +16,7 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
         let url = `${process.env.OPEN_GRAPH_GENERATE_API}${encodeURIComponent(node.title)}.png?md=1&fontSize=100px&background&fontColor=#777`
         if (icons && icons.values) {
             for (icon of icons.values) {
-                url = url + '&icons=' + encodeURIComponent(icon);
+                url = url + '&icons=' + icon;
             }
         }
 
