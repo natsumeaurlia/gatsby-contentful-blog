@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Row, Nav } from "react-bootstrap"
-import FooterStyles from "./footer.module.css"
+import FooterStyles from "./footer.module.scss"
 import CopyRight from "./copyright"
 import { Link } from "gatsby"
 

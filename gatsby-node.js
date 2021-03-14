@@ -1,11 +1,11 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const generateImageFromPageTitle = require('./src/util/generateImageFromPageTitle');
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = async ({ graphql, actions, getCache, createNodeId, cache, reporter }) => {
+  const { createPage, createNode } = actions;
 
-  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
-  const categoryTemplate = path.resolve(`./src/templates/category-post.js`)
+  const blogPostTemplate = path.resolve(`./src/templates/post.js`)
+  const categoryTemplate = path.resolve(`./src/templates/category.js`)
   const result = await graphql(
     `
       {
@@ -14,6 +14,10 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               slug
+              title
+              icons {
+                values
+              }
             }
             next {
               title
@@ -45,6 +49,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allContentfulBlogPost.edges
   const categories = result.data.allContentfulCategory.edges
 
+  const externalFluidImages = await generateImageFromPageTitle(posts, getCache, createNode, createNodeId, reporter, cache);
+
   posts.forEach(post => {
     createPage({
       path: `post/${post.node.slug}`,
@@ -52,8 +58,10 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: post.node.id,
         slug: post.node.slug,
-        previous: post.previous,
-        next: post.next,
+        // contentfulはnextが古い投稿、previousになるので逆にする
+        previous: post.next,
+        next: post.previous,
+        externalFluidImage: externalFluidImages.get(post.node.slug),
       },
     })
   })
@@ -86,17 +94,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `allContentfulBlogPost`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value: `slug`,
-    })
-  }
 }

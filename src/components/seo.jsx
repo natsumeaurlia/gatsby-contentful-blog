@@ -43,8 +43,8 @@ const SEO = ({
   const imgurl = pageImagePath
     ? `${site.siteMetadata.siteUrl}${pageImagePath}`
     : blogImagePath || `${site.siteMetadata.siteUrl}/assets/images/icon.png`
-  const imgw = ogImageWidth || 1280
-  const imgh = ogImageHeight || 640
+  const imgw = ogImageWidth
+  const imgh = ogImageHeight
 
   return (
     <Helmet
@@ -117,6 +117,8 @@ const SEO = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={location.pathname} />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </Helmet>
   )
 }
@@ -125,6 +127,8 @@ SEO.defaultProps = {
   lang: `ja`,
   meta: [],
   description: ``,
+  ogImageWidth: 1280,
+  ogImageHeight: 640,
 }
 
 SEO.propTypes = {
@@ -132,6 +136,11 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  blogImagePath: PropTypes.string,
+  pageImagePath: PropTypes.string,
+  ogImageWidth: PropTypes.number,
+  ogImageHeight: PropTypes.number,
+  location: PropTypes.object
 }
 
 export default SEO

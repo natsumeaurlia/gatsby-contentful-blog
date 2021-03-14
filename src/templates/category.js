@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BlogCard from "../components/blog-card"
+import BlogCard from "../components/card"
 
 const Category = ({ data, location }) => {
   // const siteTitle = data.site.siteMetadata.title
@@ -18,27 +18,23 @@ const Category = ({ data, location }) => {
         location={location}
       />
       <div className="text-center p-5" style={{ color: "#7B7B7B" }}>
-        <ul>
-          <li>
-            <time dateTime={category.createdAt}>{category.createdJP}</time>
-          </li>
-        </ul>
-        <h1 className="p-3">Category: {category.title}</h1>
+        <h1 className="p-3">カテゴリー: {category.title}</h1>
       </div>
-      {posts.map(post => {
-        return (
-          <BlogCard
-            key={post.id}
-            title={post.title}
-            excerpt={post.content.childMarkdownRemark.excerpt}
-            categories={post.category}
-            publishDate={post.publishedDateJP}
-            readMore={post.slug}
-            eyecatch={post.eyecatch.fluid}
-            eyecatchDescription={post.eyecatch.description}
-          />
-        )
-      })}
+      <section className="d-flex flex-wrap justify-content-around mt-n4">
+        {posts.map(post => {
+          return (
+            <BlogCard
+              key={post.id}
+              title={post.title}
+              excerpt={post.content.childMarkdownRemark.excerpt}
+              categories={post.category}
+              publishDate={post.publishedDateJP}
+              slug={post.slug}
+              eyecatch={post.eyecatch}
+            />
+          )
+        })}
+      </section>
     </Layout>
   )
 }

@@ -1,0 +1,129 @@
+@import "../styles/responsive.scss";
+@import "../styles/variable.scss";
+
+.blog_post {
+  margin-bottom: 30px;
+  background-color: white;
+
+  .title_group {
+    color: $black;
+  }
+
+  ul.post_info {
+    li {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: $gray;
+      font-weight: 400;
+      transition: all 0.3s;
+
+      &:after {
+        content: "|";
+        color: $gray;
+        margin-left: 8px;
+      }
+      &:last-child::after {
+        display: none;
+      }
+    }
+  }
+  ul.post_category {
+    li {
+      color: $gray;
+      display: inline-block;
+      a {
+        font-size: 14px;
+        color: $gray;
+        font-weight: 400;
+        transition: all 0.3s;
+
+        &a:hover {
+          color: $orange;
+        }
+      }
+      &:first-child i {
+        color: $orange;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .blog_content {
+    padding: 40px;
+    border-top: 1px solid $whitegray-100;
+    border-right: 1px solid $whitegray-100;
+    border-left: 1px solid $whitegray-100;
+    border-bottom: 1px solid $whitegray-100;
+
+    ul {
+      padding-left: 0.4rem;
+      list-style: inside;
+    }
+
+    blockquote {
+      border-left: 5px solid $gray-100;
+      color: $darkgray-100;
+      padding: 1em;
+      padding-right: 0;
+      margin: 1.5em 0;
+    }
+
+    h2 {
+      padding: 20px 15px 18px;
+      margin: 2rem 0px;
+      color: $black;
+      background-color: $whitegray;
+      /*背景透明に*/
+      border-left: solid 5px $orange;
+      font-weight: bold;
+    }
+    h3 {
+      margin: 2rem 0px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      padding: 0px 1rem 0px;
+      border-left: 8px solid $orange;
+      color: $black;
+    }
+    h4 {
+      margin: 1rem 0px;
+      border-bottom: 4px solid $orange;
+      font-size: 20px;
+      letter-spacing: 0.25px;
+    }
+    h5 {
+      margin: 0.5rem;
+      border-bottom: 2px solid $orange;
+    }
+    p {
+      margin: 1rem 0px;
+    }
+  }
+
+  .blog_head .blog_head .blog_head .blog_content img {
+    margin: 0.5rem 0px;
+  }
+
+  .blog_thumb {
+    height: 322px;
+  }
+
+  .blog_thumb img {
+    object-fit: cover;
+  }
+
+  @include sm {
+    .blog_thumb {
+      max-height: 100%;
+      height: 200px;
+    }
+    .blog_content {
+      padding: 14px;
+      border-top: 1px solid $whitegray-100;
+      border-right: 1px solid $whitegray-100;
+      border-left: 1px solid $whitegray-100;
+      border-bottom: 1px solid $whitegray-100;
+    }
+  }
+}

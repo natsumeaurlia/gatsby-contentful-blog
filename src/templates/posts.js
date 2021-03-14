@@ -5,7 +5,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BlogCard from "../components/blog-card"
+import BlogCard from "../components/card"
 
 const Posts = ({ data, location, pageContext }) => {
   // const siteTitle = data.site.siteMetadata.title
@@ -19,20 +19,21 @@ const Posts = ({ data, location, pageContext }) => {
             バックエンドがメイン。フロントからインフラまで興味があり、色々やっています"
         location={location}
       />
-      {posts.map(({ node }) => {
-        return (
-          <BlogCard
-            key={node.id}
-            title={node.title}
-            excerpt={node.content.childMarkdownRemark.excerpt}
-            publishDate={node.publishedDateJP}
-            categories={node.category}
-            readMore={node.slug}
-            eyecatch={node.eyecatch.fluid}
-            eyecatchDescription={node.eyecatch.description}
-          />
-        )
-      })}
+      <section className="d-flex flex-wrap justify-content-around mt-n4">
+        {posts.map(({ node }) => {
+          return (
+            <BlogCard
+              key={node.id}
+              title={node.title}
+              excerpt={node.content.childMarkdownRemark.excerpt}
+              publishDate={node.publishedDateJP}
+              categories={node.category}
+              slug={node.slug}
+              eyecatch={node.eyecatch}
+            />
+          )
+        })}
+      </section>
       <ul className="d-flex justify-content-around">
         <li>
           {!pageContext.isFirstPage && (
@@ -95,7 +96,7 @@ export const pageQuery = graphql`
           }
           content {
             childMarkdownRemark {
-              excerpt(format: PLAIN, pruneLength: 200)
+              excerpt(format: PLAIN, pruneLength: 140)
               html
               htmlAst
             }

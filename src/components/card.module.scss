@@ -1,0 +1,52 @@
+@import "../styles/responsive.scss";
+@import "../styles/variable.scss";
+
+.post {
+  background-color: white;
+  border: 1px solid #eee;
+  width: 48%;
+  padding: 1rem;
+
+  @include sm {
+    width: 100%;
+  }
+
+  .thumbnailContainer {
+    border-bottom: 1px solid #eee;
+
+    .thumbnail {
+      height: 200px;
+      @include sm {
+        height: 100%;
+      }
+    }
+  }
+
+  .content {
+    min-height: 180px;
+    .title {
+      color: $black;
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+
+    .excerpt {
+      color: $black;
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      word-break: break-all;
+    }
+  }
+
+  .category,
+  .date {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: $gray;
+    font-size: 0.8rem;
+    a {
+      color: $gray;
+    }
+  }
+}

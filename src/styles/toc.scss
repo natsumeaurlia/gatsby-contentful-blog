@@ -1,0 +1,39 @@
+@import "./variable.scss";
+
+.table-of-contents {
+  width: 80%;
+  margin: 1rem auto;
+  min-height: 200px;
+  border: 2px $orange solid;
+  border-radius: 4px;
+
+  &:before {
+    content: "目次";
+    font-weight: bold;
+    padding: 0 1rem;
+    background-color: $whiteorange;
+    color: $whitegray;
+    display: inline-block;
+  }
+
+  ul:first-child {
+    padding: 1rem !important;
+  }
+
+  li {
+    list-style: none;
+    margin-top: 0.25rem !important;
+
+    p {
+      margin: 0 !important;
+    }
+
+    ul {
+      padding-left: 1rem !important;
+    }
+
+    a {
+      color: $black;
+    }
+  }
+}

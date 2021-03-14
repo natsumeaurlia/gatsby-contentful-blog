@@ -1,6 +1,7 @@
 import React from "react"
 import { Nav, Navbar } from "react-bootstrap"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import HeaderStyles from "./header.module.scss"
 
 import Image from "./image"
 
@@ -22,9 +23,9 @@ const Header = props => {
     `
   )
   return (
-    <Navbar bg="light" className="py-2 shadow-sm" expand="lg">
+    <Navbar bg="white" className="py-2 shadow-sm" expand="lg">
       <Navbar.Brand href="/">
-        <div className="d-flex">
+        <div className={HeaderStyles.site_icon}>
           <Image
             filename="icon.png"
             className="mr-2"

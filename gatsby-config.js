@@ -1,4 +1,3 @@
-// ファイルの先頭に以下の内容を追加
 const dotenv = require("dotenv")
 
 if (process.env.ENVIRONMENT !== "production") {
@@ -6,6 +5,14 @@ if (process.env.ENVIRONMENT !== "production") {
 }
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+    FAST_DEV: true,
+    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    FAST_REFRESH: false,
+    PARALLEL_SOURCING: true
+  },
   siteMetadata: {
     title: `N's Dump Logs`,
     author: {
@@ -13,7 +20,7 @@ module.exports = {
       summary: `フリーランスエンジニア。フロントからインフラまで幅広く携わる`,
     },
     description: `詰まったことや学びになったことを記録していく`,
-    siteUrl: `https://c-blog.collapse-natsu.com/`,
+    siteUrl: process.env.SITE_URL,
     social: {
       twitter: `@natsume_aurlia`,
     },
@@ -38,6 +45,23 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-code-titles`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
+          },
+          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              ordered: false,
+              fromHeading: 2,
+              toHeading: 6,
+              className: "table-of-contents"
+            },
+          },
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
@@ -92,6 +116,8 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
