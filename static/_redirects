@@ -1,2 +1,4 @@
-http://natsume-cb.netlify.app/* http://blog.collapse-natsu.com/:splat  301!
-https://natsume-cb.netlify.app/* https://blog.collapse-natsu.com/:splat  301!
+http://natsume-cb.netlify.app/* http://collapse-natsu.com/:splat  301!
+https://natsume-cb.netlify.app/* https://collapse-natsu.com/:splat  301!
+http://blog.collapse-natsu.com/* http://collapse-natsu.com/:splat  301!
+https://blog.collapse-natsu.com/* https://collapse-natsu.com/:splat  301!
