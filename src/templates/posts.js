@@ -34,7 +34,7 @@ const Posts = ({ data, location, pageContext }) => {
           )
         })}
       </section>
-      <ul className="d-flex justify-content-around">
+      <ul className="d-flex justify-content-around mt-3">
         <li>
           {!pageContext.isFirstPage && (
             <Link
