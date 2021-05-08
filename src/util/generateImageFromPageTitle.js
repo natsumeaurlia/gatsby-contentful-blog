@@ -19,6 +19,11 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
 
     for (page of pages) {
         const { node } = page;
+
+        if (await cache.get(node.title)) {
+            continue;
+        }
+
         const icons = node.icons;
         const random = Math.floor(Math.random() * bg.length - 1);
         const image = bg[random] ? bg[random] : '';
@@ -50,6 +55,7 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
         });
 
         featureImages.set(node.slug, generatedImage);
+        await cache.set(node.title, node.id);
         console.info('generate image from api', decodeURI(url));
     }
     return featureImages;
