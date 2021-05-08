@@ -20,7 +20,7 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
     for (page of pages) {
         const { node } = page;
 
-        if (await cache.get(node.title)) {
+        if (await cache.get(node.title) || featureImages.has(node.slug) || node.eyecatch) {
             continue;
         }
 
@@ -33,10 +33,6 @@ module.exports = async (pages, getCache, createNode, createNodeId, reporter, cac
             for (icon of icons.values) {
                 url = url + '&icons=' + icon;
             }
-        }
-
-        if (featureImages.has(node.slug) || node.eyecatch) {
-            continue;
         }
 
         const fileNode = await createRemoteFileNode({
