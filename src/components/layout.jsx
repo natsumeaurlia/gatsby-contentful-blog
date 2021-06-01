@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       <Container fluid className="mt-5">
         <Row>
           <Col lg={1} id="sticky-sidebar">
-            <div class="sticky-top d-none d-lg-block">
+            <div className="sticky-top d-none d-lg-block">
               <SNS className="d-flex flex-lg-column" />
             </div>
           </Col>

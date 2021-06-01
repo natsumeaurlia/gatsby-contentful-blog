@@ -1,6 +1,7 @@
 import React from "react"
 import { Nav, Card } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
+import Bio from "./bio"
 
 import Styles from "./sidebar.module.scss"
 
@@ -50,6 +51,12 @@ const Sidebar = () => {
               ))}
             </Nav>
           </Card.Text>
+        </Card.Body>
+      </Card>
+      <Card className={Styles.sidebar_item + " border-0 mb-3"}>
+        <Card.Body>
+          <Card.Title className={Styles.sidebar_heading}>運営者情報</Card.Title>
+          <Bio></Bio>
         </Card.Body>
       </Card>
       <Card className={Styles.sidebar_item + " border-0"}>

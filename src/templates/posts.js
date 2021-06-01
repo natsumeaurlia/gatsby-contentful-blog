@@ -16,7 +16,7 @@ const Posts = ({ data, location, pageContext }) => {
       <SEO
         title="N's Dump Logs"
         description="現役フリーランスエンジニアの勉強・備忘録。
-            バックエンドがメイン。フロントからインフラまで興味があり、色々やっています"
+            バックエンドがメイン。フロントからインフラまで色々やっています"
         location={location}
       />
       <section className="d-flex flex-wrap justify-content-around mt-n4">

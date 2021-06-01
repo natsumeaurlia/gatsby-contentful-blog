@@ -13,7 +13,7 @@ const Footer = () => (
           <p className="text-justify">
             現役フリーランスエンジニアの勉強・備忘録。
             <br />
-            バックエンドがメイン。フロントからインフラまで興味があり、色々やっています
+            バックエンドがメイン。フロントからインフラまで色々やってます。
           </p>
         </div>
         <div className="col-xs-6 col-md-3">
