@@ -11,7 +11,7 @@ module.exports = {
     PRESERVE_WEBPACK_CACHE: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
     FAST_REFRESH: false,
-    PARALLEL_SOURCING: true
+    PARALLEL_SOURCING: true,
   },
   siteMetadata: {
     title: `N's Dump Logs`,
@@ -26,6 +26,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -59,7 +60,7 @@ module.exports = {
               ordered: false,
               fromHeading: 2,
               toHeading: 6,
-              className: "table-of-contents"
+              className: "table-of-contents",
             },
           },
           {
@@ -123,7 +124,7 @@ module.exports = {
       options: {
         output: `/sitemap.xml`,
         createLinkInHead: true,
-        exclude: [`/category/*`],
+        excludes: [`/category/*`],
         query: `
         {
           site {
