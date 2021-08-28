@@ -1,11 +1,11 @@
 import React from "react"
 import { Container, Row, Nav } from "react-bootstrap"
-import FooterStyles from "./footer.module.scss"
+import { site_footer, footer_links, copyright_text } from "./footer.module.scss"
 import CopyRight from "./copyright"
 import { Link } from "gatsby"
 
 const Footer = () => (
-  <footer className={FooterStyles.site_footer + " mt-5"}>
+  <footer className={site_footer + " mt-5"}>
     <Container>
       <Row>
         <div className="col-sm-12 col-md-6">
@@ -18,7 +18,7 @@ const Footer = () => (
         </div>
         <div className="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
-          <Nav className={FooterStyles.footer_links}>
+          <Nav className={footer_links}>
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
@@ -36,7 +36,7 @@ const Footer = () => (
     <Container>
       <Row>
         <div className="col-md-8 col-sm-6 col-xs-12">
-          <p className={FooterStyles.copyright_text}>
+          <p className={copyright_text}>
             <CopyRight />
           </p>
         </div>
