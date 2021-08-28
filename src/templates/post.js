@@ -9,16 +9,25 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons"
 
-import BlogPostStyles from "./post.module.scss"
+import {
+  blog_post,
+  title_group,
+  post_info,
+  blog_thumb,
+  blog_content,
+  post_category,
+} from "./post.module.scss"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
   const categories = data.contentfulBlogPost.category
-  const imagePath = post.eyecatch ? `https:${post.eyecatch.file.url}` : `${pageContext.externalFluidImage.src}`;
-  const width = post.eyecatch ? post.eyecatch.file.details.image.width : 1280;
-  const height = post.eyecatch ? post.eyecatch.file.details.image.height : 640;
+  const imagePath = post.eyecatch
+    ? `https:${post.eyecatch.file.url}`
+    : `${pageContext.externalFluidImage.src}`
+  const width = post.eyecatch ? post.eyecatch.file.details.image.width : 1280
+  const height = post.eyecatch ? post.eyecatch.file.details.image.height : 640
 
   const { previous, next } = pageContext
   return (
@@ -32,18 +41,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         ogImageHeight={height}
       />
       <article>
-        <div className={BlogPostStyles.blog_post}>
-          <div className={BlogPostStyles.title_group + " text-center py-5 px-3"}>
-            <ul className={BlogPostStyles.post_info}>
+        <div className={blog_post}>
+          <div className={title_group + " text-center py-5 px-3"}>
+            <ul className={post_info}>
               <li>
-                <time dateTime={post.publishDate}>
-                  {post.publishedDateJP}
-                </time>
+                <time dateTime={post.publishDate}>{post.publishedDateJP}</time>
               </li>
             </ul>
             <h1 className="mt-3">{post.title}</h1>
           </div>
-          <div className={BlogPostStyles.blog_thumb}>
+          <div className={blog_thumb}>
             {post.eyecatch ? (
               <Img
                 style={{ height: "100%" }}
@@ -51,14 +58,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 alt={post.eyecatch.description}
               />
             ) : (
-                <Img
-                  style={{ height: "100%" }}
-                  fluid={pageContext.externalFluidImage}
-                  alt={post.title}
-                />
-              )}
+              <Img
+                style={{ height: "100%" }}
+                fluid={pageContext.externalFluidImage}
+                alt={post.title}
+              />
+            )}
           </div>
-          <div className={BlogPostStyles.blog_content}>
+          <div className={blog_content}>
             <section
               dangerouslySetInnerHTML={{
                 __html: post.content.childMarkdownRemark.html,
@@ -67,7 +74,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <div className="border-top" />
             <Row className="mt-5">
               <div className="col-6">
-                <ul className={BlogPostStyles.post_category}>
+                <ul className={post_category}>
                   <li className="mr-2">
                     <FontAwesomeIcon icon={faTags} />
                   </li>
@@ -85,11 +92,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <ul className="container d-flex justify-content-between">
         <li>
           {next && (
-            <Link
-              className="btn_orange"
-              to={`/post/${next.slug}`}
-              rel="next"
-            >
+            <Link className="btn_orange" to={`/post/${next.slug}`} rel="next">
               <FontAwesomeIcon icon={faArrowLeft} />
               次へ
             </Link>
@@ -102,7 +105,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </li>
         <li>
           {previous && (
-            <Link className="btn_orange" to={`/post/${previous.slug}`} rel="prev">
+            <Link
+              className="btn_orange"
+              to={`/post/${previous.slug}`}
+              rel="prev"
+            >
               前へ
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>
@@ -116,7 +123,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
       title
       publishedDateJP: publishDate(formatString: "Y年MM月DD日")

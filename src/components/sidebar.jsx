@@ -3,7 +3,13 @@ import { Nav, Card } from "react-bootstrap"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import Bio from "./bio"
 
-import Styles from "./sidebar.module.scss"
+import {
+  recent_posts,
+  sidebar_heading,
+  sidebar_item,
+  head,
+  date,
+} from "./sidebar.module.scss"
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
@@ -38,32 +44,32 @@ const Sidebar = () => {
   const categories = data.allContentfulCategory.edges
   return (
     <React.Fragment>
-      <Card className={`${Styles.recent_posts} border-0`}>
+      <Card className={`${recent_posts} border-0`}>
         <Card.Body>
-          <Card.Title className={Styles.sidebar_heading}>最近の投稿</Card.Title>
+          <Card.Title className={sidebar_heading}>最近の投稿</Card.Title>
           <Card.Text>
             <Nav>
               {posts.map(({ node }) => (
                 <Nav.Link key={node.id} as={Link} to={`/post/${node.slug}`}>
-                  <h5 className={Styles.head}>{node.title}</h5>
-                  <span className={Styles.date}>{node.publishedDateJP}</span>
+                  <h5 className={head}>{node.title}</h5>
+                  <span className={date}>{node.publishedDateJP}</span>
                 </Nav.Link>
               ))}
             </Nav>
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card className={Styles.sidebar_item + " border-0 mb-3"}>
+      <Card className={sidebar_item + " border-0 mb-3"}>
         <Card.Body>
-          <Card.Title className={Styles.sidebar_heading}>運営者情報</Card.Title>
+          <Card.Title className={sidebar_heading}>運営者情報</Card.Title>
           <Bio></Bio>
         </Card.Body>
       </Card>
-      <Card className={Styles.sidebar_item + " border-0"}>
+      <Card className={sidebar_item + " border-0"}>
         <Card.Body>
-          <Card.Title className={Styles.sidebar_heading}>カテゴリー</Card.Title>
+          <Card.Title className={sidebar_heading}>カテゴリー</Card.Title>
           <Card.Text>
-            <Nav className={Styles.categories}>
+            <Nav className={categories}>
               {categories.map(({ node }) => (
                 <Nav.Link key={node.id} as={Link} to={`/category/${node.slug}`}>
                   {node.title}
