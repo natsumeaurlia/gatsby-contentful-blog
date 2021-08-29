@@ -46,7 +46,12 @@
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "prettier": "^2.3.2"
+    "@types/prismjs": "^1.16.6",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-helmet": "^6.1.2",
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.2"
   },
   "scripts": {
     "build": "gatsby build",
