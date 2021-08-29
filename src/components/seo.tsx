@@ -21,9 +21,9 @@ const SEO = ({
   ogImageHeight,
   location,
 }) => {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<GatsbyTypes.SeoQueryQuery>(
     graphql`
-      query {
+      query SeoQuery {
         site {
           siteMetadata {
             title
@@ -117,8 +117,14 @@ const SEO = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={location.pathname} />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
     </Helmet>
   )
 }
@@ -140,7 +146,7 @@ SEO.propTypes = {
   pageImagePath: PropTypes.string,
   ogImageWidth: PropTypes.number,
   ogImageHeight: PropTypes.number,
-  location: PropTypes.object
+  location: PropTypes.object,
 }
 
 export default SEO

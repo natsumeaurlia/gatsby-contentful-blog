@@ -26,6 +26,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-typegen`,
     `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-google-analytics`,

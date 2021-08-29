@@ -4,9 +4,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-const Image = (props) => {
-  const { allImageSharp } = useStaticQuery(graphql`
-    query {
+const Image = props => {
+  const { allImageSharp } = useStaticQuery<GatsbyTypes.AllImageQueryQuery>(graphql`
+    query AllImageQuery {
       allImageSharp {
         nodes {
           fluid(maxWidth: 1600) {

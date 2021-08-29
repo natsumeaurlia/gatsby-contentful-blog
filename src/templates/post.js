@@ -123,7 +123,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query ($id: String!) {
+  query PostQuery($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
       title
       publishedDateJP: publishDate(formatString: "Y年MM月DD日")

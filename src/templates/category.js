@@ -42,7 +42,7 @@ const Category = ({ data, location }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query ($id: String!) {
+  query CategoryQuery($id: String!) {
     contentfulCategory(id: { eq: $id }) {
       id
       slug

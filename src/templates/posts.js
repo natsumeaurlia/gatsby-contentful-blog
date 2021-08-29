@@ -71,7 +71,7 @@ const Posts = ({ data, location, pageContext }) => {
 export default Posts
 
 export const pageQuery = graphql`
-  query ($skip: Int!, $limit: Int!) {
+  query PostsQuery($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
       sort: { fields: [publishDate], order: DESC }
       skip: $skip
