@@ -1,13 +1,13 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { Form, Button } from "react-bootstrap"
 
 const Contact = ({ location }) => {
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`お問い合わせ`}
         description={`お問い合わせフォーム`}
         location={location}

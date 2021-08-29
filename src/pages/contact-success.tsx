@@ -2,12 +2,12 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Success = ({ location }) => {
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`お問い合わせ内容を送信しました`}
         description={`お問い合わせ内容を送信しました`}
         location={location}

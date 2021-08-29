@@ -1,12 +1,12 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Privacy = ({ location }) => {
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`プライバシーポリシー`}
         description={`プライバシーポリシーの明記ページ`}
         location={location}
