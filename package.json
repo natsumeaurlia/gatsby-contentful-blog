@@ -54,6 +54,7 @@
     "typescript": "^4.4.2"
   },
   "scripts": {
+    "typecheck": "tsc",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
