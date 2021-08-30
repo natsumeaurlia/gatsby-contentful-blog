@@ -6,7 +6,11 @@ import SNS from "./sns"
 
 import { Container, Col, Row } from "react-bootstrap"
 
-const Layout = ({ children }) => {
+interface Props {
+  children: React.ReactNode
+}
+
+const Layout = ({ children }: Props) => {
   return (
     <React.Fragment>
       <Header />
