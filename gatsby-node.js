@@ -1,8 +1,15 @@
 const path = require(`path`)
-const generateImageFromPageTitle = require('./src/util/generateImageFromPageTitle');
+const generateImageFromPageTitle = require("./src/util/generateImageFromPageTitle")
 
-exports.createPages = async ({ graphql, actions, getCache, createNodeId, cache, reporter }) => {
-  const { createPage, createNode } = actions;
+exports.createPages = async ({
+  graphql,
+  actions,
+  getCache,
+  createNodeId,
+  cache,
+  reporter,
+}) => {
+  const { createPage, createNode } = actions
 
   const blogPostTemplate = path.resolve(`./src/templates/post.js`)
   const categoryTemplate = path.resolve(`./src/templates/category.js`)
@@ -52,7 +59,14 @@ exports.createPages = async ({ graphql, actions, getCache, createNodeId, cache, 
   const posts = result.data.allContentfulBlogPost.edges
   const categories = result.data.allContentfulCategory.edges
 
-  const externalFluidImages = await generateImageFromPageTitle(posts, getCache, createNode, createNodeId, reporter, cache);
+  const externalFluidImages = await generateImageFromPageTitle(
+    posts,
+    getCache,
+    createNode,
+    createNodeId,
+    reporter,
+    cache
+  )
 
   posts.forEach(post => {
     createPage({
