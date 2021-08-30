@@ -3,8 +3,9 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { PageProps } from "gatsby"
 
-const Success = ({ location }) => {
+const Success = ({ location }: PageProps) => {
   return (
     <Layout>
       <Seo

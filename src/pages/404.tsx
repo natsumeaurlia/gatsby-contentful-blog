@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { PageProps } from "gatsby"
 
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage = ({ data, location }: PageProps) => {
   return (
     <Layout>
       <Seo title="404: Not Found" location={location} />

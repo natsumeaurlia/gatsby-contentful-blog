@@ -10,6 +10,7 @@ import {
   head,
   date,
   categories,
+  // @ts-ignore
 } from "./sidebar.module.scss"
 
 const Sidebar = () => {

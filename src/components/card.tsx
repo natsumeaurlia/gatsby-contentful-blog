@@ -15,6 +15,7 @@ import {
   content,
   excerpt,
   thumbnailContainer,
+  // @ts-ignore
 } from "./card.module.scss"
 
 const BlogCard = props => {

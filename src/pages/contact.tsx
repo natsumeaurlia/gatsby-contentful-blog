@@ -3,8 +3,9 @@ import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Form, Button } from "react-bootstrap"
+import { PageProps } from "gatsby"
 
-const Contact = ({ location }) => {
+const Contact = ({ location }: PageProps) => {
   return (
     <Layout>
       <Seo

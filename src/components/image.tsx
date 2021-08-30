@@ -2,28 +2,38 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Img, { FluidObject } from "gatsby-image"
 
-const Image = props => {
-  const { allImageSharp } = useStaticQuery<GatsbyTypes.AllImageQueryQuery>(graphql`
-    query AllImageQuery {
-      allImageSharp {
-        nodes {
-          fluid(maxWidth: 1600) {
-            originalName
-            ...GatsbyImageSharpFluid_withWebp
+interface Props {
+  fileName: string
+  alt?: string
+  className?: string
+  style?: object
+}
+
+const Image = (props: Props) => {
+  const { allImageSharp } =
+    useStaticQuery<GatsbyTypes.AllImageQueryQuery>(graphql`
+      query AllImageQuery {
+        allImageSharp {
+          nodes {
+            fluid(maxWidth: 1600) {
+              originalName
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
         }
       }
-    }
-  `)
+    `)
 
   // 拡張子削除して検索
-  const fluidObj = allImageSharp.nodes.find(
-    node =>
-      String(node.fluid.originalName).replace(/\.[^/.]+$/, "") ===
+  const fluidObj = allImageSharp.nodes.find(node => {
+    if (!node.fluid) {
+      return {}
+    }
+    String(node.fluid.originalName).replace(/\.[^/.]+$/, "") ===
       String(props.fileName).replace(/\.[^/.]+$/, "")
-  )
+  })
 
   return (
     <React.Fragment>

@@ -1,9 +1,10 @@
+import { PageProps } from "gatsby"
 import React from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const Privacy = ({ location }) => {
+const Privacy = ({ location }: PageProps) => {
   return (
     <Layout>
       <Seo
