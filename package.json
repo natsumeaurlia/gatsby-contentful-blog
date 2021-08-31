@@ -2,11 +2,6 @@
   "name": "gatsby-blog",
   "version": "0.1.0",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "bootstrap": "^5.1.0",
     "gatsby": "^3.12.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-adsense": "^1.1.3",
