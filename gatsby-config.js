@@ -28,6 +28,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-typegen`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
