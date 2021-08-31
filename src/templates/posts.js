@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import BlogCard from "../components/card"
 
 const Posts = ({ data, location, pageContext }) => {
@@ -13,7 +13,7 @@ const Posts = ({ data, location, pageContext }) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title="N's Dump Logs"
         description="現役フリーランスエンジニアの勉強・備忘録。
             バックエンドがメイン。フロントからインフラまで色々やっています"
@@ -71,7 +71,7 @@ const Posts = ({ data, location, pageContext }) => {
 export default Posts
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query PostsQuery($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
       sort: { fields: [publishDate], order: DESC }
       skip: $skip
