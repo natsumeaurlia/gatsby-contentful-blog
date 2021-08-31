@@ -8,7 +8,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, PageProps } from "gatsby"
+import { WindowLocation } from "@reach/router"
 
 const SEO = ({
   description,
@@ -20,10 +21,10 @@ const SEO = ({
   ogImageWidth,
   ogImageHeight,
   location,
-}) => {
-  const { site } = useStaticQuery(
+}: Props) => {
+  const { site } = useStaticQuery<GatsbyTypes.SeoQueryQuery>(
     graphql`
-      query {
+      query SeoQuery {
         site {
           siteMetadata {
             title
@@ -39,10 +40,10 @@ const SEO = ({
   )
 
   const currentUrl = typeof window !== "undefined" ? window.location.href : ""
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site?.siteMetadata?.description
   const imgurl = pageImagePath
-    ? `${site.siteMetadata.siteUrl}${pageImagePath}`
-    : blogImagePath || `${site.siteMetadata.siteUrl}/assets/images/icon.png`
+    ? `${site?.siteMetadata?.siteUrl}${pageImagePath}`
+    : blogImagePath || `${site?.siteMetadata?.siteUrl}/assets/images/icon.png`
   const imgw = ogImageWidth
   const imgh = ogImageHeight
 
@@ -52,7 +53,7 @@ const SEO = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site?.siteMetadata?.title}`}
       meta={[
         {
           name: `description`,
@@ -68,7 +69,7 @@ const SEO = ({
         },
         {
           property: `og:site_title`,
-          content: site.siteMetadata.title,
+          content: site?.siteMetadata?.title,
         },
         {
           property: `og:description`,
@@ -100,11 +101,11 @@ const SEO = ({
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
+          content: site?.siteMetadata?.social?.twitter,
         },
         {
           name: `twitter:site`,
-          content: site.siteMetadata.social.twitter,
+          content: site?.siteMetadata?.social?.twitter,
         },
         {
           name: `twitter:title`,
@@ -117,8 +118,14 @@ const SEO = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={location.pathname} />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
     </Helmet>
   )
 }
@@ -140,7 +147,19 @@ SEO.propTypes = {
   pageImagePath: PropTypes.string,
   ogImageWidth: PropTypes.number,
   ogImageHeight: PropTypes.number,
-  location: PropTypes.object
+  location: PropTypes.object,
+}
+
+type Props = {
+  description: string
+  lang: string
+  meta: JSX.IntrinsicElements["meta"]
+  title: string
+  blogImagePath: string
+  pageImagePath: string
+  ogImageWidth: number
+  ogImageHeight: number
+  location: WindowLocation
 }
 
 export default SEO

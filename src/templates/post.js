@@ -18,7 +18,7 @@ import {
   post_category,
 } from "./post.module.scss"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
@@ -32,7 +32,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
   return (
     <Layout>
-      <SEO
+      <Seo
         title={post.title}
         description={post.content.childMarkdownRemark.excerpt}
         location={location}
@@ -123,7 +123,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query ($id: String!) {
+  query PostQuery($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
       title
       publishedDateJP: publishDate(formatString: "Y年MM月DD日")

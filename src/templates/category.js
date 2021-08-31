@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import BlogCard from "../components/card"
 
 const Category = ({ data, location }) => {
@@ -12,7 +12,7 @@ const Category = ({ data, location }) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`カテゴリ: ${category.title}の記事一覧`}
         description={`カテゴリ: ${category.title}の記事一覧`}
         location={location}
@@ -42,7 +42,7 @@ const Category = ({ data, location }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query CategoryQuery($id: String!) {
     contentfulCategory(id: { eq: $id }) {
       id
       slug

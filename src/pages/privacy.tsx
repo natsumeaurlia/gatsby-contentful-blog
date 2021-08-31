@@ -1,12 +1,13 @@
+import { PageProps } from "gatsby"
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
-const Privacy = ({ location }) => {
+const Privacy = ({ location }: PageProps) => {
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`プライバシーポリシー`}
         description={`プライバシーポリシーの明記ページ`}
         location={location}

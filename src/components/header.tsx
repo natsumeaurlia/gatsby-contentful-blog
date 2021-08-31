@@ -1,14 +1,15 @@
 import React from "react"
 import { Nav, Navbar } from "react-bootstrap"
 import { Link, useStaticQuery, graphql } from "gatsby"
+// @ts-ignore
 import { site_icon } from "./header.module.scss"
 
 import Image from "./image"
 
 const Header = props => {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<GatsbyTypes.HeaderQueryQuery>(
     graphql`
-      query {
+      query HeaderQuery {
         site {
           siteMetadata {
             title

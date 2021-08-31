@@ -9,11 +9,13 @@ import {
   sidebar_item,
   head,
   date,
+  categories,
+  // @ts-ignore
 } from "./sidebar.module.scss"
 
 const Sidebar = () => {
-  const data = useStaticQuery(graphql`
-    query {
+  const data = useStaticQuery<GatsbyTypes.SidebarQueryQuery>(graphql`
+    query SidebarQuery {
       allContentfulBlogPost(
         sort: { fields: [publishDate], order: DESC }
         limit: 5
@@ -41,7 +43,7 @@ const Sidebar = () => {
   `)
 
   const posts = data.allContentfulBlogPost.edges
-  const categories = data.allContentfulCategory.edges
+  const allCategories = data.allContentfulCategory.edges
   return (
     <React.Fragment>
       <Card className={`${recent_posts} border-0`}>
@@ -70,7 +72,7 @@ const Sidebar = () => {
           <Card.Title className={sidebar_heading}>カテゴリー</Card.Title>
           <Card.Text>
             <Nav className={categories}>
-              {categories.map(({ node }) => (
+              {allCategories.map(({ node }) => (
                 <Nav.Link key={node.id} as={Link} to={`/category/${node.slug}`}>
                   {node.title}
                 </Nav.Link>

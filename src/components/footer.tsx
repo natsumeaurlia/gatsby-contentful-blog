@@ -1,8 +1,9 @@
 import React from "react"
 import { Container, Row, Nav } from "react-bootstrap"
-import { site_footer, footer_links, copyright_text } from "./footer.module.scss"
 import CopyRight from "./copyright"
 import { Link } from "gatsby"
+// @ts-ignore
+import { site_footer, footer_links, copyright_text } from "./footer.module.scss"
 
 const Footer = () => (
   <footer className={site_footer + " mt-5"}>
