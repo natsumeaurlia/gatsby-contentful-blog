@@ -1,7 +1,7 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 import { TwitterIcon } from "react-share"
-import Image from "./image"
+import Image from "./atoms/image"
 
 const Bio = () => {
   return (

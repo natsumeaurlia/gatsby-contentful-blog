@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTags } from "@fortawesome/free-solid-svg-icons"
 import PropTypes from "prop-types"
-import Image from "./image"
+import Image from "./atoms/image"
 
 import {
   post,
