@@ -2,7 +2,7 @@ import React from "react"
 import { LineIcon, LineShareButton } from "react-share"
 import { IconProps } from "./type"
 
-export default (props: IconProps) => {
+const Line = (props: IconProps) => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
   return (
     <LineShareButton url={shareUrl}>
@@ -10,3 +10,5 @@ export default (props: IconProps) => {
     </LineShareButton>
   )
 }
+
+export default Line

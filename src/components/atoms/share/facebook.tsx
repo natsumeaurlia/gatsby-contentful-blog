@@ -2,7 +2,7 @@ import React from "react"
 import { FacebookIcon, FacebookShareButton } from "react-share"
 import { IconProps } from "./type"
 
-export default (props: IconProps) => {
+const Facebook = (props: IconProps) => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
   return (
     <FacebookShareButton url={shareUrl}>
@@ -10,3 +10,5 @@ export default (props: IconProps) => {
     </FacebookShareButton>
   )
 }
+
+export default Facebook

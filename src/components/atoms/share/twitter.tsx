@@ -2,7 +2,7 @@ import React from "react"
 import { TwitterIcon, TwitterShareButton } from "react-share"
 import { IconProps } from "./type"
 
-export default (props: IconProps) => {
+const Twitter = (props: IconProps) => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
   return (
     <TwitterShareButton url={shareUrl}>
@@ -10,3 +10,5 @@ export default (props: IconProps) => {
     </TwitterShareButton>
   )
 }
+
+export default Twitter
