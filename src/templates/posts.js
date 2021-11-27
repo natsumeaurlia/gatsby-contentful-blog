@@ -1,11 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
-
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import BlogCard from "../components/card"
+import BlogCard from "../components/postcard"
 
 const Posts = ({ data, location, pageContext }) => {
   // const siteTitle = data.site.siteMetadata.title
@@ -46,7 +45,7 @@ const Posts = ({ data, location, pageContext }) => {
               }
               rel="prev"
             >
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <ArrowLeftIcon />
               前のページへ
             </Link>
           )}
@@ -59,7 +58,7 @@ const Posts = ({ data, location, pageContext }) => {
               rel="prev"
             >
               次のページへ
-              <FontAwesomeIcon icon={faArrowRight} />
+              <ArrowRightIcon />
             </Link>
           )}
         </li>
@@ -71,7 +70,7 @@ const Posts = ({ data, location, pageContext }) => {
 export default Posts
 
 export const pageQuery = graphql`
-  query PostsQuery($skip: Int!, $limit: Int!) {
+  query Posts($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
       sort: { fields: [publishDate], order: DESC }
       skip: $skip

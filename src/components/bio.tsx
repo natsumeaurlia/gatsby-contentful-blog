@@ -1,5 +1,5 @@
 import React from "react"
-import { Card } from "react-bootstrap"
+import { Card, CardContent } from "@mui/material"
 import { TwitterIcon } from "react-share"
 import Image from "./atoms/image"
 
@@ -14,7 +14,7 @@ const Bio = () => {
           style={{ width: "5rem", height: "5rem" }}
         />
       </div>
-      <Card.Title className="text-center">
+      <CardContent className="text-center">
         Natsume
         <a target="_blank" href="https://twitter.com/natsume_aurlia">
           <TwitterIcon
@@ -24,8 +24,8 @@ const Bio = () => {
             round={false}
           />
         </a>
-      </Card.Title>
-      <Card.Text style={{ fontSize: "0.8rem" }}>
+      </CardContent>
+      <CardContent style={{ fontSize: "0.8rem" }}>
         エンジニアでフリーランスしてます。
         高卒→2年ニート→1年間テスター中に勉強→フリーランスエンジニア。
         フルリモート×フレックス×週休3日で働かせて頂いてます。
@@ -33,7 +33,7 @@ const Bio = () => {
         <br />
         <br />
         開発や質問等お気軽にお問い合わせください！
-      </Card.Text>
+      </CardContent>
     </React.Fragment>
   )
 }

@@ -1,22 +1,11 @@
 import React from "react"
-import { Row } from "react-bootstrap"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faTags,
-  faArrowLeft,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons"
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft"
+import ArrowRightIcon from "@mui/icons-material/ArrowRight"
+import LocalOfferIcon from "@mui/icons-material/LocalOffer"
 
-import {
-  blog_post,
-  title_group,
-  post_info,
-  blog_thumb,
-  blog_content,
-  post_category,
-} from "./post.module.scss"
+import { blog_content, blog_post, blog_thumb, post_category, post_info, title_group } from "./post.module.scss"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -68,15 +57,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <div className={blog_content}>
             <section
               dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
+                __html: post.content.childMarkdownRemark.html
               }}
             />
             <div className="border-top" />
-            <Row className="mt-5">
+            <div className="mt-5">
               <div className="col-6">
                 <ul className={post_category}>
                   <li className="mr-2">
-                    <FontAwesomeIcon icon={faTags} />
+                    <LocalOfferIcon />
                   </li>
                   {categories.map(c => (
                     <li key={c.id} className="mr-2">
@@ -85,7 +74,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   ))}
                 </ul>
               </div>
-            </Row>
+            </div>
           </div>
         </div>
       </article>
@@ -93,7 +82,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <li>
           {next && (
             <Link className="btn_orange" to={`/post/${next.slug}`} rel="next">
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <ArrowLeftIcon />
               次へ
             </Link>
           )}
@@ -111,7 +100,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               rel="prev"
             >
               前へ
-              <FontAwesomeIcon icon={faArrowRight} />
+              <ArrowRightIcon />
             </Link>
           )}
         </li>
@@ -123,38 +112,38 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query PostQuery($id: String!) {
-    contentfulBlogPost(id: { eq: $id }) {
-      title
-      publishedDateJP: publishDate(formatString: "Y年MM月DD日")
-      publishDate
-      category {
-        title
-        slug
-        id
-      }
-      content {
-        childMarkdownRemark {
-          excerpt(format: PLAIN, pruneLength: 200)
-          html
-          htmlAst
-        }
-      }
-      eyecatch {
-        fluid(maxWidth: 1600) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        description
-        file {
-          details {
-            image {
-              width
-              height
+    query Post($id: String!) {
+        contentfulBlogPost(id: { eq: $id }) {
+            title
+            publishedDateJP: publishDate(formatString: "Y年MM月DD日")
+            publishDate
+            category {
+                title
+                slug
+                id
             }
-          }
-          url
+            content {
+                childMarkdownRemark {
+                    excerpt(format: PLAIN, pruneLength: 200)
+                    html
+                    htmlAst
+                }
+            }
+            eyecatch {
+                fluid(maxWidth: 1600) {
+                    ...GatsbyContentfulFluid_withWebp
+                }
+                description
+                file {
+                    details {
+                        image {
+                            width
+                            height
+                        }
+                    }
+                    url
+                }
+            }
         }
-      }
     }
-  }
 `

@@ -1,5 +1,5 @@
-import { ResponsiveStyleValue } from "@material-ui/system"
-import { Stack } from "@material-ui/core"
+import { ResponsiveStyleValue } from "@mui/system"
+import { Stack } from "@mui/material"
 import React from "react"
 import Facebook from "../atoms/share/facebook"
 import Twitter from "../atoms/share/twitter"

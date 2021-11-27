@@ -3,12 +3,12 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import BlogCard from "../components/card"
+import BlogCard from "../components/postcard"
 
 const Category = ({ data, location }) => {
   // const siteTitle = data.site.siteMetadata.title
   const category = data.contentfulCategory
-  const posts = data.contentfulCategory.blogpost
+  const posts = data.contentfulCategory.blogpost || []
 
   return (
     <Layout>
@@ -42,7 +42,7 @@ const Category = ({ data, location }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query CategoryQuery($id: String!) {
+  query Category($id: String!) {
     contentfulCategory(id: { eq: $id }) {
       id
       slug

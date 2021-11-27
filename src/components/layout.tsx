@@ -3,8 +3,8 @@ import Header from "./organism/header"
 import Footer from "./organism/footer"
 import Sidebar from "./organism/sidebar"
 import Share from "./organism/share"
-import { Container, CssBaseline, Grid } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
+import { Container, CssBaseline, Grid } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
 interface Props {
   children: React.ReactNode

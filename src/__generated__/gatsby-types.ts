@@ -68,7 +68,6 @@ type File = Node & {
   readonly birthtimeMs: Maybe<Scalars['Float']>;
   readonly blksize: Maybe<Scalars['Int']>;
   readonly blocks: Maybe<Scalars['Int']>;
-  readonly url: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   readonly publicURL: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -338,6 +337,7 @@ type SitePageContext = {
   readonly slug: Maybe<Scalars['String']>;
   readonly previous: Maybe<SitePageContextPrevious>;
   readonly next: Maybe<SitePageContextNext>;
+  readonly externalFluidImage: Maybe<SitePageContextExternalFluidImage>;
   readonly skip: Maybe<Scalars['Int']>;
   readonly limit: Maybe<Scalars['Int']>;
   readonly currentPage: Maybe<Scalars['Int']>;
@@ -353,6 +353,20 @@ type SitePageContextPrevious = {
 type SitePageContextNext = {
   readonly title: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
+};
+
+type SitePageContextExternalFluidImage = {
+  readonly base64: Maybe<Scalars['String']>;
+  readonly aspectRatio: Maybe<Scalars['Float']>;
+  readonly src: Maybe<Scalars['String']>;
+  readonly srcSet: Maybe<Scalars['String']>;
+  readonly srcSetType: Maybe<Scalars['String']>;
+  readonly sizes: Maybe<Scalars['String']>;
+  readonly originalImg: Maybe<Scalars['String']>;
+  readonly originalName: Maybe<Scalars['String']>;
+  readonly density: Maybe<Scalars['Int']>;
+  readonly presentationWidth: Maybe<Scalars['Int']>;
+  readonly presentationHeight: Maybe<Scalars['Int']>;
 };
 
 type MarkdownHeading = {
@@ -1261,7 +1275,6 @@ type Query_fileArgs = {
   birthtimeMs: Maybe<FloatQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
-  url: Maybe<StringQueryOperatorInput>;
   publicURL: Maybe<StringQueryOperatorInput>;
   childrenImageSharp: Maybe<ImageSharpFilterListInput>;
   childImageSharp: Maybe<ImageSharpFilterInput>;
@@ -1879,7 +1892,6 @@ type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
-  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp.fixed.base64'
@@ -2152,7 +2164,6 @@ type FileFilterInput = {
   readonly birthtimeMs: Maybe<FloatQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
   readonly publicURL: Maybe<StringQueryOperatorInput>;
   readonly childrenImageSharp: Maybe<ImageSharpFilterListInput>;
   readonly childImageSharp: Maybe<ImageSharpFilterInput>;
@@ -2768,6 +2779,7 @@ type SitePageContextFilterInput = {
   readonly slug: Maybe<StringQueryOperatorInput>;
   readonly previous: Maybe<SitePageContextPreviousFilterInput>;
   readonly next: Maybe<SitePageContextNextFilterInput>;
+  readonly externalFluidImage: Maybe<SitePageContextExternalFluidImageFilterInput>;
   readonly skip: Maybe<IntQueryOperatorInput>;
   readonly limit: Maybe<IntQueryOperatorInput>;
   readonly currentPage: Maybe<IntQueryOperatorInput>;
@@ -2783,6 +2795,20 @@ type SitePageContextPreviousFilterInput = {
 type SitePageContextNextFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePageContextExternalFluidImageFilterInput = {
+  readonly base64: Maybe<StringQueryOperatorInput>;
+  readonly aspectRatio: Maybe<FloatQueryOperatorInput>;
+  readonly src: Maybe<StringQueryOperatorInput>;
+  readonly srcSet: Maybe<StringQueryOperatorInput>;
+  readonly srcSetType: Maybe<StringQueryOperatorInput>;
+  readonly sizes: Maybe<StringQueryOperatorInput>;
+  readonly originalImg: Maybe<StringQueryOperatorInput>;
+  readonly originalName: Maybe<StringQueryOperatorInput>;
+  readonly density: Maybe<IntQueryOperatorInput>;
+  readonly presentationWidth: Maybe<IntQueryOperatorInput>;
+  readonly presentationHeight: Maybe<IntQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -3077,6 +3103,17 @@ type SitePageFieldsEnum =
   | 'context.previous.slug'
   | 'context.next.title'
   | 'context.next.slug'
+  | 'context.externalFluidImage.base64'
+  | 'context.externalFluidImage.aspectRatio'
+  | 'context.externalFluidImage.src'
+  | 'context.externalFluidImage.srcSet'
+  | 'context.externalFluidImage.srcSetType'
+  | 'context.externalFluidImage.sizes'
+  | 'context.externalFluidImage.originalImg'
+  | 'context.externalFluidImage.originalName'
+  | 'context.externalFluidImage.density'
+  | 'context.externalFluidImage.presentationWidth'
+  | 'context.externalFluidImage.presentationHeight'
   | 'context.skip'
   | 'context.limit'
   | 'context.currentPage'
@@ -6360,12 +6397,12 @@ type ContentfulContentTypeSortInput = {
 
 type GatsbyContentfulFluid_withWebpFragment = Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type PostQueryQueryVariables = Exact<{
+type PostQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type PostQueryQuery = { readonly contentfulBlogPost: Maybe<(
+type PostQuery = { readonly contentfulBlogPost: Maybe<(
     Pick<ContentfulBlogPost, 'title' | 'publishDate'>
     & { publishedDateJP: ContentfulBlogPost['publishDate'] }
     & { readonly category: Maybe<ReadonlyArray<Maybe<Pick<ContentfulCategory, 'title' | 'slug' | 'id'>>>>, readonly content: Maybe<{ readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'excerpt' | 'html' | 'htmlAst'>> }>, readonly eyecatch: Maybe<(
@@ -6377,12 +6414,12 @@ type PostQueryQuery = { readonly contentfulBlogPost: Maybe<(
     )> }
   )> };
 
-type CategoryQueryQueryVariables = Exact<{
+type CategoryQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type CategoryQueryQuery = { readonly contentfulCategory: Maybe<(
+type CategoryQuery = { readonly contentfulCategory: Maybe<(
     Pick<ContentfulCategory, 'id' | 'slug' | 'title' | 'createdAt'>
     & { createdJP: ContentfulCategory['createdAt'] }
     & { readonly blogpost: Maybe<ReadonlyArray<Maybe<(
@@ -6395,13 +6432,13 @@ type CategoryQueryQuery = { readonly contentfulCategory: Maybe<(
     )>>> }
   )> };
 
-type PostsQueryQueryVariables = Exact<{
+type PostsQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
 
-type PostsQueryQuery = { readonly allContentfulBlogPost: { readonly edges: ReadonlyArray<{ readonly node: (
+type PostsQuery = { readonly allContentfulBlogPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulBlogPost, 'id' | 'slug' | 'title'>
         & { publishedDateJP: ContentfulBlogPost['publishDate'] }
         & { readonly eyecatch: Maybe<(
@@ -6415,10 +6452,18 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type NotFoundQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type NotFoundQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type NotFoundQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type NotFoundQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+type AllImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllImageQuery = { readonly allImageSharp: { readonly nodes: ReadonlyArray<{ readonly fluid: Maybe<(
+        Pick<ImageSharpFluid, 'originalName'>
+        & GatsbyImageSharpFluid_withWebpFragment
+      )> }> } };
 
 type HeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6427,14 +6472,6 @@ type HeaderQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'description' | 'siteUrl'>
       & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitter'>> }
     )> }> };
-
-type AllImageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllImageQueryQuery = { readonly allImageSharp: { readonly nodes: ReadonlyArray<{ readonly fluid: Maybe<(
-        Pick<ImageSharpFluid, 'originalName'>
-        & GatsbyImageSharpFluid_withWebpFragment
-      )> }> } };
 
 type SeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
