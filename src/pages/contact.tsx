@@ -1,8 +1,7 @@
 import React from "react"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Form, Button } from "react-bootstrap"
+import { FormGroup, Button, FormControl, TextField, FormLabel, TextareaAutosize } from "@mui/material"
 import { PageProps } from "gatsby"
 
 const Contact = ({ location }: PageProps) => {
@@ -16,7 +15,7 @@ const Contact = ({ location }: PageProps) => {
       <div className="text-center p-5" style={{ color: "#7B7B7B" }}>
         <h1 className="p-3">お問い合わせ</h1>
 
-        <Form
+        <form
           name="contact"
           method="POST"
           action="/contact-success"
@@ -26,38 +25,33 @@ const Contact = ({ location }: PageProps) => {
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
 
-          <Form.Group controlId="formBasicName">
-            <Form.Label>お名前</Form.Label>
-            <Form.Control
-              type="text"
+          <FormGroup>
+            <FormLabel>お名前</FormLabel>
+            <TextareaAutosize
               name="name"
               placeholder="お名前"
-              maxlength="30"
-              minlength="2"
+              minRows="{2}"
               required
-              autocomplete="name"
             />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>メールアドレス</Form.Label>
-            <Form.Control
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>メールアドレス</FormLabel>
+            <TextField
               type="email"
               name="email"
               placeholder="example@example.com"
-              pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
               required
-              autocomplete="email"
             />
-          </Form.Group>
-          <Form.Group controlId="ControlTextarea">
-            <Form.Label>お問い合わせ内容</Form.Label>
-            <Form.Control as="textarea" required name="content" rows="8" />
-          </Form.Group>
-          <div data-netlify-recaptcha="true"></div>
-          <Button variant="primary" type="submit">
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>お問い合わせ内容</FormLabel>
+            <TextareaAutosize required name="content" rows="8" />
+          </FormGroup>
+          <div data-netlify-recaptcha="true" />
+          <Button variant="contained" type="submit">
             送信
           </Button>
-        </Form>
+        </form>
       </div>
     </Layout>
   )

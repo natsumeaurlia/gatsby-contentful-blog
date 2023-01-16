@@ -1,24 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTags } from "@fortawesome/free-solid-svg-icons"
 import PropTypes from "prop-types"
-import Image from "./image"
+import Image from "./atoms/image"
+import LocalOfferIcon from "@mui/icons-material/LocalOffer"
 
-import {
-  post,
-  thumbnail,
-  title,
-  category,
-  date,
-  content,
-  excerpt,
-  thumbnailContainer,
-  // @ts-ignore
-} from "./card.module.scss"
+import { category, content, date, excerpt, post, thumbnail, thumbnailContainer, title } from "./card.module.scss"
 
-const BlogCard = props => {
+interface Props {
+  slug: string
+  eyecatch?: string
+  publishDate: Date
+  categories?: any,
+  title: String,
+  excerpt: String
+}
+
+const PostCard = (props: Props) => {
   return (
     <article className={`${post} mt-4`}>
       <Link to={`/post/${props.slug}`}>
@@ -53,28 +51,28 @@ const BlogCard = props => {
       <div className="mt-3">
         <ul className={category}>
           <li className="mr-2">
-            <FontAwesomeIcon icon={faTags}></FontAwesomeIcon>
+            <LocalOfferIcon />
           </li>
           {props.categories &&
-            props.categories.map(category => (
-              <li key={category.id} className="mr-2">
-                <Link to={`/category/${category.slug}`}>{category.title}</Link>
-              </li>
-            ))}
+          props.categories.map((category: any) => (
+            <li key={category.id} className="mr-2">
+              <Link to={`/category/${category.slug}`}>{category.title}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </article>
   )
 }
 
-BlogCard.propTypes = {
+PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   publishDate: PropTypes.string.isRequired,
   categories: PropTypes.array,
   slug: PropTypes.string.isRequired,
   eyecatch: PropTypes.object,
-  externalFluidImage: PropTypes.object,
+  externalFluidImage: PropTypes.object
 }
 
-export default BlogCard
+export default PostCard

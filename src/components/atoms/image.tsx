@@ -12,19 +12,18 @@ interface Props {
 }
 
 const Image = (props: Props) => {
-  const { allImageSharp } =
-    useStaticQuery<GatsbyTypes.AllImageQueryQuery>(graphql`
-      query AllImageQuery {
-        allImageSharp {
-          nodes {
-            fluid(maxWidth: 1600) {
-              originalName
-              ...GatsbyImageSharpFluid_withWebp
-            }
+  const { allImageSharp } = useStaticQuery<GatsbyTypes.AllImageQuery>(graphql`
+    query AllImage {
+      allImageSharp {
+        nodes {
+          fluid(maxWidth: 1600) {
+            originalName
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-    `)
+    }
+  `)
 
   // 拡張子削除して検索
   const fluidObj = allImageSharp.nodes.find(node => {

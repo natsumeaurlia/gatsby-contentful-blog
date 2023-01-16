@@ -1,33 +1,39 @@
 import React from "react"
-import Header from "./header"
-import Footer from "./footer"
-import Sidebar from "./sidebar"
-import SNS from "./sns"
-
-import { Container, Col, Row } from "react-bootstrap"
+import Header from "./organism/header"
+import Footer from "./organism/footer"
+import Sidebar from "./organism/sidebar"
+import Share from "./organism/share"
+import { Container, CssBaseline, Grid } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
 interface Props {
   children: React.ReactNode
 }
 
+const useStyles = makeStyles({
+  sidebar: {
+    display: "flex",
+    flexDirection: "column",
+  },
+})
+
 const Layout = ({ children }: Props) => {
   return (
     <React.Fragment>
+      <CssBaseline />
       <Header />
-      <Container fluid className="mt-5">
-        <Row>
-          <Col lg={1} id="sticky-sidebar">
-            <div className="sticky-top d-none d-lg-block">
-              <SNS className="d-flex flex-lg-column" />
-            </div>
-          </Col>
-          <Col lg={8} md={12}>
+      <Container maxWidth="lg">
+        <Grid container spacing={1}>
+          <Grid item lg={1}>
+            <Share round={true} iconSize={40} />
+          </Grid>
+          <Grid item lg={8} md={12}>
             {children}
-          </Col>
-          <Col lg={3} md={12} className="mt-3 mt-lg-0">
+          </Grid>
+          <Grid item lg={3} md={12}>
             <Sidebar />
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
       </Container>
       <Footer />
     </React.Fragment>
